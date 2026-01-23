@@ -780,6 +780,7 @@ button.btn-success {
   background-position: center;
   background-size:cover;
   padding-top: 150px;
+  width: 100%;
 }
 .site-header-neminathproducts{
   background-image: url('../images/neminathproducts/product1.png');
