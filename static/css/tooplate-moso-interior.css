@@ -791,6 +791,7 @@ button.btn-success {
   padding-top:400px;
   padding-bottom:100px;
   width: 100%;
+  min-height: 100vh;
 }
 
 /*---------------------------------------
