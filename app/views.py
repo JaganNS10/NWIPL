@@ -84,7 +84,7 @@ def job_apply(request, id):
             # application.save()
             user_email = request.POST.get('email')
 
-            subject = "Welcome to Our Company"
+            subject = "Welcome to Neminath Wood Industry Private Limited"
 
             html_content = render_to_string("sendemailtoperson.html", {
                         'full_name': full_name,
