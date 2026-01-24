@@ -14,6 +14,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.utils import timezone
 from email.mime.image import MIMEImage
+from django.core.mail.backends.smtp import EmailBackend
 import os
 
 def Home(request):
@@ -137,8 +138,9 @@ def job_apply(request, id):
             application = form.save(commit=False)
             application.job = job
             # application.save()
-            
+
             print(form.cleaned_data)
+        
             subject = "Application Received – Neminath Wood Industry Pvt Ltd"
 
             message = (
