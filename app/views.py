@@ -128,44 +128,7 @@ def products(request):
 
 
 
-def form_contact(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        user_email = request.POST.get('email')
 
-        subject = "Welcome to Our Company"
-
-        html_content = render_to_string("contactemail.html", {
-            'name': name,
-            'year': timezone.now().year,
-        })
-
-        text_content = strip_tags(html_content)
-
-        email_msg = EmailMultiAlternatives(
-            subject,
-            text_content,
-            settings.EMAIL_HOST_USER,
-            [user_email]
-        )
-
-        email_msg.attach_alternative(html_content, "text/html")
-
-        # ✅ Correct static path (Render-safe)
-        logo_path = os.path.join(settings.STATIC_ROOT, 'assets/images/NeminathLogo.png')
-
-        if os.path.exists(logo_path):
-            with open(logo_path, 'rb') as f:
-                logo = MIMEImage(f.read())
-                logo.add_header('Content-ID', '<companylogo>')
-                logo.add_header('Content-Disposition', 'inline', filename="logo.png")
-                email_msg.attach(logo)
-
-        email_msg.send()
-
-        return redirect('home')
-
-    return redirect('home')
 
 
 
