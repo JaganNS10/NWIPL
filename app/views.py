@@ -81,7 +81,7 @@ def job_apply(request, id):
             application.job = job
             # application.save()
 
-            name = request.POST.get('name')
+            name = request.POST.get('first_name')
             user_email = request.POST.get('email')
 
             subject = "Welcome to Our Company"
