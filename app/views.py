@@ -82,6 +82,7 @@ def job_apply(request, id):
             application = form.save(commit=False)
             application.job = job
             # application.save()
+            print(form.cleaned_data)
             user_email = request.POST.get('email')
 
             subject = "Welcome to Neminath Wood Industry Private Limited"
@@ -105,8 +106,7 @@ def job_apply(request, id):
 
             email_msg.send()
 
-            
-            messages.success(request, 'Your application has been submitted successfully.')
+            messages.success(request, f'Your application for the position of {job_title} has been submitted successfully.Check Your mail for more details.Our team will review your application and get back to you soon.thank you for considering a career with Neminath Wood Industry Private Limited.')
             return redirect('careers')
         
         else:
