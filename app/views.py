@@ -86,7 +86,7 @@ def job_apply(request, id):
 
             subject = "Welcome to Our Company"
 
-            html_content = render_to_string("contactemail.html", {
+            html_content = render_to_string("sendemailtoperson.html", {
                         'name': name,
                         'year': timezone.now().year,
                     })
@@ -110,9 +110,11 @@ def job_apply(request, id):
         
         else:
             print(form.errors)
+            messages.error(request, 'There was an error with your submission. Please correct the errors below.')
     else:
         print(False)
         form = JobApplicationForm()
+
 
     return render(request, 'job_apply.html', {
         'job': job,
