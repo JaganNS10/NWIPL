@@ -76,18 +76,19 @@ def job_apply(request, id):
         form = JobApplicationForm(request.POST, request.FILES)
         print(request.POST)
         if form.is_valid():
+            full_name = form.cleaned_data['first_name'] + ' ' + form.cleaned_data['last_name']
+            job_title = job.title
             print(True)
             application = form.save(commit=False)
             application.job = job
             # application.save()
-
-            name = request.POST.get('first_name')
             user_email = request.POST.get('email')
 
             subject = "Welcome to Our Company"
 
             html_content = render_to_string("sendemailtoperson.html", {
-                        'name': name,
+                        'full_name': full_name,
+                        'job_title': job_title,
                         'year': timezone.now().year,
                     })
 
