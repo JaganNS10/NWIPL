@@ -7,6 +7,14 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
 
+from django.core.mail import send_mail
+from django.conf import settings
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.utils import timezone
+from email.mime.image import MIMEImage
+import os
 
 def Home(request):
     return render(request,'index.html')
@@ -72,8 +80,34 @@ def job_apply(request, id):
             application = form.save(commit=False)
             application.job = job
             # application.save()
+
+            name = request.POST.get('name')
+            user_email = request.POST.get('email')
+
+            subject = "Welcome to Our Company"
+
+            html_content = render_to_string("contactemail.html", {
+                        'name': name,
+                        'year': timezone.now().year,
+                    })
+
+            text_content = strip_tags(html_content)
+
+            email_msg = EmailMultiAlternatives(
+                        subject,
+                        text_content,
+                        settings.EMAIL_HOST_USER,
+                        [user_email]
+                    )
+
+            email_msg.attach_alternative(html_content, "text/html")
+
+            email_msg.send()
+
+            
             messages.success(request, 'Your application has been submitted successfully.')
             return redirect('careers')
+        
         else:
             print(form.errors)
     else:
@@ -90,6 +124,46 @@ def products(request):
     return render(request,'products.html')
 
 
+
+
+def form_contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        user_email = request.POST.get('email')
+
+        subject = "Welcome to Our Company"
+
+        html_content = render_to_string("contactemail.html", {
+            'name': name,
+            'year': timezone.now().year,
+        })
+
+        text_content = strip_tags(html_content)
+
+        email_msg = EmailMultiAlternatives(
+            subject,
+            text_content,
+            settings.EMAIL_HOST_USER,
+            [user_email]
+        )
+
+        email_msg.attach_alternative(html_content, "text/html")
+
+        # ✅ Correct static path (Render-safe)
+        logo_path = os.path.join(settings.STATIC_ROOT, 'assets/images/NeminathLogo.png')
+
+        if os.path.exists(logo_path):
+            with open(logo_path, 'rb') as f:
+                logo = MIMEImage(f.read())
+                logo.add_header('Content-ID', '<companylogo>')
+                logo.add_header('Content-Disposition', 'inline', filename="logo.png")
+                email_msg.attach(logo)
+
+        email_msg.send()
+
+        return redirect('home')
+
+    return redirect('home')
 
 
 

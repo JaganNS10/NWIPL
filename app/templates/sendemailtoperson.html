@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>New Contact Request</title>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; }
+        .container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; }
+        .header { text-align: center; margin-bottom: 20px;}
+        .header img { width: 150px; }
+        .content { font-size: 16px; line-height: 1.6; }
+        .footer { font-size: 12px; color: #999; text-align: center; padding-top: 20px; }
+        .Headingpart1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: large;
+            font-weight:bold;
+            background: linear-gradient(135deg, #ffffff, #ffe3b3);
+            -webkit-text-fill-color: transparent;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- <img src="{{ logo_url }}" alt="Company Logo"> -->
+            <div>
+                <img src="{% static 'images/NeminathLogo.jpeg' %}" alt="Company Logo" width="150">
+            </div>
+            <div>
+                <span class="Headingpart1">
+                    NWIPL BEYOND BORDERS
+                </span>
+            </div>
+        </div>
+        <div class="content">
+            <h2>Hii {{ name }} Thank you for joining Neminath Wood Industry Private Limited .Our Team will contact you shortly.We are excited to have you.</h2>
+        </div>
+        <div class="footer">
+            &copy; 2018 Neminath Wood Industry Pvt Ltd. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>
