@@ -3,6 +3,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Job, JobApplication
 from .forms import JobApplicationForm
 from django.contrib import messages
+from django.contrib.sitemaps import Sitemap
+from django.urls import reverse
+
 
 
 def Home(request):
@@ -85,6 +88,18 @@ def job_apply(request, id):
 
 def products(request):
     return render(request,'products.html')
+
+
+
+class StaticViewSitemap(Sitemap):
+    priority = 1.0
+    changefreq = 'weekly'
+
+    def items(self):
+        return ['home']  # your home URL name
+
+    def location(self, item):
+        return reverse(item)
 
 
 
