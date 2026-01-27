@@ -252,6 +252,11 @@ strong {
 }
 
 
+
+
+
+
+
 /*---------------------------------------
   CUSTOM LINK               
 -----------------------------------------*/
@@ -487,32 +492,6 @@ button.btn-success {
   padding-top: 0;
   padding-bottom: 0;
   transition: all 0.3s;
-} */
-
-/* .navbar {
-  padding-top: 0;
-  padding-bottom: 0;
-  transition: all 0.3s;
-  background: linear-gradient(
-    90deg,
-    #1C120C,
-    #2F8F3A,
-    #1C120C
-  );
-} */
-
-.navbar {
-  padding-top: 0;
-  padding-bottom: 0;
-  transition: all 0.3s;
-  /* background: linear-gradient(
-    90deg,
-    #140B06,
-    #3A2416,
-    #8B5E2E,
-    #3A2416,
-    #140B06
-  ); */
   background: linear-gradient(
     90deg,
     #0F1722,
@@ -531,18 +510,10 @@ button.btn-success {
 }
 
 .navbar-brand,.navbar-brand:hover {
-  color: var(--secondary-color); /* Gold on hover */
+  color: var(--secondary-color); 
 }
 
-/* .navbar-brand {
-  font-size: var(--h4-font-size);
-  font-weight: var(--font-weight-bold);
-}
 
-.navbar-brand,
-.navbar-brand:hover {
-  color: var(--primary-color);
-} */
 
 .navbar-expand-lg .navbar-nav .nav-link {
   margin-right: 0;
@@ -565,6 +536,85 @@ button.btn-success {
   background: var(--primary-color);
   color: var(--white-color);
 }
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.brand-wrapper img {
+  height: 60px;
+  width: auto;
+} */
+
+.navbar {
+  height:70px;
+  padding: 0 !important;
+  transition: all 0.3s;
+  background: linear-gradient(
+    90deg,
+    #0F1722,
+    #1E2A38,
+    #2A3A52,
+    #1E2A38,
+    #0F1722
+  );
+}
+
+.navbar-brand {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  font-size: var(--h4-font-size);
+  font-weight: var(--font-weight-bold);
+  color: var(--light-text);
+}
+.navbar-brand,.navbar-brand:hover {
+  color: var(--secondary-color); 
+}
+/* .navbar-expand-lg .navbar-nav .nav-link {
+  margin-right: 0;
+  margin-left: 0;
+  padding: 20px 20px;
+} */
+
+/* Mobile menu background fix */
+.navbar-collapse {
+  background: linear-gradient(
+    90deg,
+    #0F1722,
+    #1E2A38,
+    #2A3A52,
+    #1E2A38,
+    #0F1722
+  );
+}
+
+
+.navbar-nav .nav-link.active, 
+.navbar-nav .nav-link:hover {
+  background: var(--primary-color);
+  color: var(--white-color);
+}
+
+
+
+.navbar-expand-lg .navbar-nav .nav-link {
+  height: 70px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  color: var(--p-bg-color);
+  font-size: var(--menu-font-size);
+  font-weight: var(--font-weight-medium);
+}
+
+
+.brand-wrapper img {
+  height:70px;
+  width: auto;
+}
+
 
 .dropdown-menu {
   border-radius: 0;

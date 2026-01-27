@@ -13,6 +13,7 @@
     //   STATIC_URL + "images/Babycot.jpg",
     // ],  {duration: 2000, fade: 750});
     $('.hero-slide').backstretch([
+        STATIC_URL + "images/NeminathLogo.jpeg",
         STATIC_URL + "images/slideshow/wooden-furniture-1.jpg",
         STATIC_URL + "images/slideshow/complement-light-oak-with-mid-century-furniture.jpg",
         STATIC_URL + "images/slideshow/featured-compressed-46.jpg",
@@ -20,6 +21,7 @@
         STATIC_URL + "images/Image2.avif",
         STATIC_URL + "images/Babycot.jpg",
         STATIC_URL + "images/Image3.jfif"
+
     ], {
         duration: 2000,
         fade: 750
