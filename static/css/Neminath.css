@@ -10,12 +10,17 @@
   --custom-btn-bg-color-one:          #00a05d;
   --custom-btn-bg-color:         #F8F8FF;
 
-  --primary-color:brown;
-  --secondary-color: #D4AF37;   /* Royal Gold */
-  --accent-color: #9E7C2F;      /* Deep Gold */
-  --dark-bg: #0F1722;           /* Deep Navy */
-  --light-text: #F2F4F8;        /* Soft Ice White */
+  /* --primary-color:brown;
+  --secondary-color: #D4AF37;   
+  --accent-color: #9E7C2F;      
+  --dark-bg: #0F1722;          
+  --light-text: #F2F4F8;         */
 
+  --primary-color: #B47B3C;    /* Wood brown (main logo color) */
+  --secondary-color: #D9BB90;  /* Gold text / border */
+  --accent-color: #A26833;     /* Darker brown (wood texture) */
+  --dark-bg: #1D1C2D;          /* Dark background (card + surrounding) */
+  --light-text: #E6D6BE;       /* Light beige / highlight text */
 
 
 
@@ -60,9 +65,10 @@ overflow-x: hidden;
 body {
     width: 100%;
     overflow-x: hidden;
-    background-color: var(--white-color);
+    /* background-color: var(--white-color); */
     font-family: var(--body-font-family); 
     padding-top: 70px;
+
 }
 
 /*---------------------------------------
@@ -144,18 +150,13 @@ strong {
   font-weight: var(--font-weight-bold);
 }
 
-/* .tooplate-red {
-	color: var(--secondary-color);
-}
-.tooplate-green {
-	color: #00a05d;
-} */
+
 .tooplate-red {
-  color: var(--secondary-color); /* Gold */
+  color: var(--secondary-color); 
 }
 
 .tooplate-green {
-  color: var(--primary-color);   /* Green */
+  color: var(--primary-color);   
 }
 
 
@@ -900,6 +901,12 @@ button.btn-success {
 .about-section {
   padding-top: 150px;
   padding-bottom: 150px;
+  background: linear-gradient(
+    135deg,
+    #141C2A 0%,
+    #1E2A3A 45%,
+    #223047 100%
+  );
 }
 
 .about-image {
@@ -941,7 +948,12 @@ button.btn-success {
   SHOP              
 -----------------------------------------*/
 .shop-section {
-  background: var(--white-color);
+  background: linear-gradient(
+    160deg,
+    #0B1320 0%,
+    #121C2D 60%,
+    #1A2540 100%
+  );
 }
 
 .shop-listing-page .shop-section {
