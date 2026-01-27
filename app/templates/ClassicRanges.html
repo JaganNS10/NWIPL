@@ -142,7 +142,7 @@
 
                         <div class="col-lg-6 col-12 m-auto">
                             <div class="custom-block shop-detail-custom-block">
-                                <h3 class="mb-3">Explore Classic Ranges</h3>
+                                <h3 class="mb-3 text-white">Explore Classic Ranges</h3>
                                 <p>Neminath Wood offers a timeless selection of classic ranges that blend elegance and functionality for every interior space. Our designs are crafted to complement wooden finishes and modern décor effortlessly.</p>
                                 <p>From sophisticated cabinets to versatile furniture, Neminath's classic ranges provide quality, durability, and style, making every room both practical and aesthetically pleasing.</p>
                             </div>
@@ -189,7 +189,7 @@
                                 <div class="shop-image-wrap">
                                     <img src="{% static 'images/classicranges/classicrangeone.jpg' %}" class="shop-image img-fluid" alt="">
                                 </div>
-                               <h5 class="mt-2">Classic Range Doors</h5>
+                               <h5 class="mt-2 text-white">Classic Range Doors</h5>
                             </div>
                         </div>
 
@@ -198,7 +198,7 @@
                                 <div class="shop-image-wrap">
                                     <img src="{% static 'images/classicranges/classicrangetwo.png' %}" class="shop-image img-fluid" alt="">
                                 </div>
-                                <h5 class="mt-2">Elegant Wooden Doors</h5>
+                                <h5 class="mt-2 text-white">Elegant Wooden Doors</h5>
                             </div>
                         </div>
 
@@ -207,7 +207,7 @@
                                 <div class="shop-image-wrap">
                                     <img src="{% static 'images/classicranges/classicrangethree.jpg' %}" class="shop-image img-fluid" alt="">
                                 </div>
-                                <h5 class="mt-2">Timeless Door Designs</h5>
+                                <h5 class="mt-2 text-white">Timeless Door Designs</h5>
                             </div>
                         </div>
                         <div class="col-lg-3 col-12">
@@ -215,7 +215,7 @@
                                 <div class="shop-image-wrap">
                                     <img src="{% static 'images/classicranges/classicrangefour.webp' %}" class="shop-image img-fluid" alt="">
                                 </div>
-                                <h5 class="mt-2">Premium Interior Doors</h5>
+                                <h5 class="mt-2 text-white">Premium Interior Doors</h5>
                             </div>
                         </div>
                         <div class="col-lg-8 col-12">
@@ -223,7 +223,7 @@
                                 <div class="shop-image-wrap">
                                     <img src="{% static 'images/classicranges/classicrangefive.jpg' %}" class="shop-image img-fluid" alt="">
                                 </div>
-                               <h5 class="mt-2">Sophisticated Door Styles</h5>
+                               <h5 class="mt-2 text-white">Sophisticated Door Styles</h5>
                             </div>
                         </div>
                         <!-- <div class="col-lg-4 col-12">
@@ -231,7 +231,7 @@
                                 <div class="shop-image-wrap">
                                     <img src="images/classicranges/classicrangesix.jpg" class="shop-image img-fluid" alt="">
                                 </div>
-                                <h5 class="mt-2">Refined Classic Doors</h5>
+                                <h5 class="mt-2 text-white">Refined Classic Doors</h5>
                             </div>
                         </div> -->
 
@@ -239,8 +239,20 @@
                 </div>
             </section>
 
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#36363e" fill-opacity="1" d="M0,96L40,117.3C80,139,160,181,240,186.7C320,192,400,160,480,149.3C560,139,640,149,720,176C800,203,880,245,960,250.7C1040,256,1120,224,1200,229.3C1280,235,1360,277,1400,298.7L1440,320L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <defs>
+                <linearGradient id="grad" gradientUnits="userSpaceOnUse"
+                x1="0" y1="0" x2="1440" y2="1440">
+                <stop offset="0%" stop-color="#141C2A" />
+                <stop offset="45%" stop-color="#1E2A3A" />
+                <stop offset="100%" stop-color="#223047" />
+                </linearGradient>
+            </defs>
 
+            <path fill="url(#grad)" fill-opacity="1"
+                d="M0,96L40,117.3C80,139,160,181,240,186.7C320,192,400,160,480,149.3C560,139,640,149,720,176C800,203,880,245,960,250.7C1040,256,1120,224,1200,229.3C1280,235,1360,277,1400,298.7L1440,320L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
+            </path>
+        </svg>
         </main>
 
         <footer class="site-footer section-padding">
