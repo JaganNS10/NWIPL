@@ -69,50 +69,72 @@
     }
 });
 
-  // $('.owl-service-item').owlCarousel({
-  //   items:4,
-  //   loop:true,
-  //   dots: true,
-  //   nav: false,
-  //   autoplay: true,
-  //   margin:15,
-  //   responsive:{
-  //     0:{
-  //       items:1
-  //     },
-  //     600:{
-  //       items:2
-  //     },
-  //     1000:{
-  //       items:4
-  //     }
-  //   }
-  // })
 
-  $(document).ready(function () {
-  $('.owl-service-item').owlCarousel({
+
+$(document).ready(function () {
+
+  var owl = $('.owl-service-item');
+
+  owl.owlCarousel({
     items: 4,
-    loop: true,                // infinite slideshow
+    loop: true,
     margin: 15,
-    autoplay: true,            // auto slide
-    autoplayTimeout: 3000,     // 3 seconds
-    autoplayHoverPause: true,  // pause on hover
-    dots: true,                // pagination dots
-    nav: false,                // no arrows
-    smartSpeed: 800,           // smooth transition
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    dots: false,
+    nav: false,
+    smartSpeed: 800,
     responsive: {
-      0: {
-        items: 1
-      },
-      600: {
-        items: 2
-      },
-      1000: {
-        items: 4
-      }
+      0: { items: 1 },
+      600: { items: 2 },
+      1000: { items: 4 }
     }
   });
+
+  // Create 3 dots
+  function createThreeDots() {
+    $('.custom-dots').remove();
+
+    var dotHTML = '<div class="custom-dots">';
+    for (var i = 0; i < 3; i++) {
+      dotHTML += '<span class="dot" data-page="' + i + '"></span>';
+    }
+    dotHTML += '</div>';
+
+    owl.after(dotHTML);
+
+    // click dots
+    $('.custom-dots .dot').click(function () {
+
+      // Pause autoplay
+      owl.trigger('stop.owl.autoplay');
+
+      var page = $(this).data('page');
+      owl.trigger('to.owl.carousel', [page * 4, 800]); // move to each group
+
+      $('.custom-dots .dot').removeClass('active');
+      $(this).addClass('active');
+    });
+
+    $('.custom-dots .dot').first().addClass('active');
+  }
+
+  createThreeDots();
+
+  // Update active dot based on current position
+  owl.on('changed.owl.carousel', function (event) {
+    var current = event.item.index;
+    var perPage = event.page.size;
+    var dotIndex = Math.floor(current / perPage) % 3;
+
+    $('.custom-dots .dot').removeClass('active');
+    $('.custom-dots .dot').eq(dotIndex).addClass('active');
+  });
+
 });
+
+
 
 
   })(window.jQuery);
