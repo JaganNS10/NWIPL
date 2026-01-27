@@ -447,29 +447,7 @@ button.btn-success {
 
 
 
-/* Slider container */
-.logo-slider {
-    width: 100%;
-    overflow: hidden;
-    background: #fff;
-    padding: 30px 0;
-    border-radius: 10px;
-}
 
-/* Track that moves */
-.logo-track {
-    display: flex;
-    width: calc(300px * 28); /* increased width */
-    animation: scroll 60s linear infinite; /* SLOW SPEED */
-}
-
-/* Logo images */
-.logo-track img {
-    width: 220px;
-    height: auto;
-    margin: 0 30px; /* MORE SPACE BETWEEN LOGOS */
-    object-fit: contain;
-}
 
 /* Animation */
 @keyframes scroll {
@@ -663,6 +641,75 @@ button.btn-success {
   left: 2px;
   border: 0;
 }
+
+
+
+/* Section spacing */
+.services {
+  margin-top: 80px;
+  padding: 60px 0;
+  background: #fff;
+}
+
+/* Heading */
+.services .client {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Carousel item spacing */
+.owl-service-item .item {
+  padding: 10px;
+}
+
+/* Logo image styling */
+.owl-service-item .item img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 20px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.owl-service-item .item img:hover {
+  transform: scale(1.05);
+}
+
+
+/* Make dots visible */
+.owl-dots {
+  display: block !important;
+  position: relative;
+  margin-top: 25px;
+  text-align: center;
+  z-index: 999;
+}
+
+/* Style dots */
+.owl-dot {
+  width: 12px;
+  height: 12px;
+  background: #c9a24d !important;
+  margin: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Active dot */
+.owl-dot.active {
+  background: #5a3b1f !important;
+  transform: scale(1.3);
+}
+
+
+
 
 
 
