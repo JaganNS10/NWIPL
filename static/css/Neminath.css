@@ -159,7 +159,14 @@ strong {
   color: var(--primary-color);   
 }
 
-
+main{
+  background: linear-gradient(
+    135deg,
+    #141C2A 0%,
+    #1E2A3A 45%,
+    #223047 100%
+  );
+}
 
 /*---------------------------------------
   SECTION               
@@ -648,7 +655,12 @@ button.btn-success {
 .services {
   margin-top: 80px;
   padding: 60px 0;
-  background: #fff;
+  background: linear-gradient(
+    135deg,
+    #141C2A 0%,
+    #1E2A3A 45%,
+    #223047 100%
+  );
 }
 
 /* Heading */
@@ -657,6 +669,7 @@ button.btn-success {
   font-weight: 600;
   margin-bottom: 40px;
   text-align: center;
+  color: white;
 }
 
 /* Carousel item spacing */
@@ -970,7 +983,7 @@ button.btn-success {
 /*---------------------------------------
   ABOUT              
 -----------------------------------------*/
-.about-section {
+/* .about-section {
   padding-top: 150px;
   padding-bottom: 150px;
   background: linear-gradient(
@@ -979,7 +992,7 @@ button.btn-success {
     #1E2A3A 45%,
     #223047 100%
   );
-}
+} */
 
 .about-image {
   display: block;
@@ -1019,14 +1032,14 @@ button.btn-success {
 /*---------------------------------------
   SHOP              
 -----------------------------------------*/
-.shop-section {
+/* .shop-section {
   background: linear-gradient(
     160deg,
     #0B1320 0%,
     #121C2D 60%,
     #1A2540 100%
   );
-}
+} */
 
 .shop-listing-page .shop-section {
   padding-bottom: 0;
@@ -1131,7 +1144,13 @@ button.btn-success {
   CONTACT               
 -----------------------------------------*/
 .contact-section {
-  background: var(--white-color);
+  background: linear-gradient(
+    135deg,
+    #141C2A 0%,
+    #1E2A3A 45%,
+    #223047 100%
+  );
+  padding-bottom:30px;
 }
 
 .contact-form {
@@ -1229,9 +1248,10 @@ button.btn-success {
   SITE FOOTER              
 -----------------------------------------*/
 .site-footer {
-  background: var(--site-footer-bg-color);
+  background: linear-gradient(135deg, #141C2A 0%, #1E2A3A 45%, #223047 100%);
   padding-top: 0;
 }
+
 
 .site-footer h3 {
   line-height: normal;
