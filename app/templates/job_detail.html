@@ -101,13 +101,13 @@
         <main>
             <section class="job-detail-hero py-5 mt-5">
                 <div class="container">
-                    <h1 class="fw-bold text-white">{{ job.title }}</h1>
+                    <h1 style="color: white;" class="fw-bold">{{ job.title }}</h1>
                     <p class="text-muted">{{ job.department }}</p>
 
                     <div class="job-meta mt-3">
-                        <span><i class="bi-geo-alt text-white"></i> {{ job.location }}</span>
-                        <span><i class="bi-briefcase text-white"></i> {{ job.experience_required }}</span>
-                        <span><i class="bi-clock text-white"></i> {{ job.job_type }}</span>
+                        <span style="color: white;"><i class="bi-geo-alt text-white"></i> {{ job.location }}</span>
+                        <span style="color: white;"><i class="bi-briefcase text-white"></i> {{ job.experience_required }}</span>
+                        <span style="color: white;"><i class="bi-clock text-white"></i> {{ job.job_type }}</span>
                     </div>
 
                     <a href="{% url 'job_apply' job.id %}" class="btn btn-success mt-4">

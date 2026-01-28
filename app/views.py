@@ -9,11 +9,6 @@ from django.urls import reverse
 
 from django.core.mail import send_mail
 from django.conf import settings
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
-from django.utils import timezone
-from email.mime.image import MIMEImage
 from django.core.mail.backends.smtp import EmailBackend
 import os
 
@@ -158,8 +153,8 @@ def job_apply(request, id):
             send_mail(
                 subject,
                 message,
-                settings.EMAIL_HOST_USER,
-                [form.cleaned_data['email']],
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[form.cleaned_data['email']],
             )
             messages.success(request, f'Your application for the position of {job_title} has been submitted successfully.Check Your mail for more details.Our team will review your application and get back to you soon.thank you for considering a career with Neminath Wood Industry Private Limited.')
             return redirect('careers')
