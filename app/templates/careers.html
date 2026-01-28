@@ -50,19 +50,18 @@
         </div>
         {% endif %}
 
-        <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
+         <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
             <div class="container">
-                <!-- <a class="navbar-brand" href="{% url 'Home' %}">Moso<span class="tooplate-red">Inter</span><span class="tooplate-green">ior</span></a> -->
+
                 <a class="navbar-brand" href="{% url 'Home' %}">
                     <div class="brand-wrapper">
+                        <!-- <img src="{% static 'images/NWIPLLOGO.png' %}" alt="NWI Logo"> -->
                         <img src="{% static 'images/nwi-logo-flat.png' %}" alt="NWI Logo">
                     </div>
                 </a>
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
@@ -73,22 +72,6 @@
                             <a class="nav-link click-scroll" href="{% url 'Home' %}">About</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle click-scroll" href="{% url 'Home' %}" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Residence</a>
-
-                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                
-                                <li><a class="dropdown-item" href="{% url 'Furnitureforkids' %}">Furniture for Kids</a></li>
-                                <li><a class="dropdown-item" href="{% url 'Tvunit' %}">TV Unit</a></li>
-                                <li><a class="dropdown-item" href="{% url 'Wardrobe' %}">Wardrobe</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="{% url 'Home' %}">Our Clients</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="{% url 'Home' %}">Contact</a>
-                        </li>
-                       <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle click-scroll" href="#section_3" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Our Products</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
@@ -101,7 +84,23 @@
 
                             </ul>
                         </li>
-                         <li class="nav-item dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_4">Our Client</a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_5">Contact</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle click-scroll" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Residence</a>
+
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                
+                                <li><a class="dropdown-item" href="{% url 'Furnitureforkids' %}">Furniture for Kids</a></li>
+                                <li><a class="dropdown-item" href="{% url 'Tvunit' %}">TV Unit</a></li>
+                                <li><a class="dropdown-item" href="{% url 'Wardrobe' %}">Wardrobe</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle click-scroll" href="" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Our facility</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
@@ -111,7 +110,7 @@
                                 </li>
                             </ul>
                         </li>
-                         <li>
+                         <li class="nav-item">
                             <a class="nav-link click-scroll" href="{% url 'careers' %}">Careers</a>
                         </li>
                     </ul>
