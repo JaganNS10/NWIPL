@@ -11,6 +11,9 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.core.mail.backends.smtp import EmailBackend
 import os
+import sib_api_v3_sdk
+from sib_api_v3_sdk.rest import ApiException
+
 
 def Home(request):
     return render(request,'index.html')
@@ -62,6 +65,80 @@ def careers(request):
 def job_detail(request, id):
     job = get_object_or_404(Job, id=id, is_active=True)
     return render(request, 'job_detail.html', {'job': job})
+
+
+
+
+def send_brevo_email(to_email, subject, html_content):
+    """
+    Send email via Brevo (Sendinblue) API
+    """
+    configuration = sib_api_v3_sdk.Configuration()
+    configuration.api_key['api-key'] = os.environ.get('BREVO_API_KEY')  # set this in Render
+    
+    api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
+
+    send_smtp_email = sib_api_v3_sdk.SendSmtpEmail(
+        to=[{"email": to_email}],
+        sender={"name": "Neminath Wood Industry Private Limited", "email": "jagan10ns@gmail.com"},  # verified sender
+        subject=subject,
+        html_content=html_content
+    )
+
+    try:
+        api_response = api_instance.send_transac_email(send_smtp_email)
+        print("Email sent successfully:", api_response)
+    except ApiException as e:
+        print("Exception when sending email:", e)
+
+
+
+def job_apply(request, id):
+    job = get_object_or_404(Job, id=id)
+
+    if request.method == 'POST':
+        print(os.environ.get('BREVO_API_KEY'))
+        form = JobApplicationForm(request.POST, request.FILES)
+        if form.is_valid():
+            full_name = form.cleaned_data['first_name'] + ' ' + form.cleaned_data['last_name']
+            job_title = job.title
+
+            application = form.save(commit=False)
+            application.job = job
+            # application.save()
+
+            # Prepare email
+            subject = "Application Received – Neminath Wood Industry Pvt Ltd"
+            html_message = f"""
+            <p>Hi {full_name},</p>
+            <p>Thank you for your interest in Neminath Wood Industry Private Limited.</p>
+            <p>We have successfully received your application for the position of <b>{job_title}</b>.</p>
+            <p>Due to the high number of applications, we will contact only shortlisted candidates for the next stage.</p>
+            <p>Best regards,<br>Neminath Wood Industry Pvt Ltd<br>Talent Acquisition Team</p>
+            """
+
+            # Send email using Brevo API
+            send_brevo_email(form.cleaned_data['email'], subject, html_message)
+
+            messages.success(
+                request,
+                f'Your application for the position of {job_title} has been submitted successfully. '
+                'Check your email for confirmation. Our team will review your application and get back to you soon.'
+            )
+            return redirect('careers')
+        else:
+            print(form.errors)
+            messages.error(request, 'There was an error with your submission. Please correct the errors below.')
+    else:
+        form = JobApplicationForm()
+
+    return render(request, 'job_apply.html', {
+        'job': job,
+        'form': form
+    })
+
+def products(request):
+    return render(request,'products.html')
 
 
 # def job_apply(request, id):
@@ -119,62 +196,61 @@ def job_detail(request, id):
 #     })
 
 
-def job_apply(request, id):
-    job = get_object_or_404(Job, id=id)
+# def job_apply(request, id):
+#     job = get_object_or_404(Job, id=id)
 
-    if request.method == 'POST':
+#     if request.method == 'POST':
 
-        form = JobApplicationForm(request.POST, request.FILES)
-        print(request.POST)
-        if form.is_valid():
-            full_name = form.cleaned_data['first_name'] + ' ' + form.cleaned_data['last_name']
-            job_title = job.title
-            print(True)
-            application = form.save(commit=False)
-            application.job = job
-            # application.save()
+#         form = JobApplicationForm(request.POST, request.FILES)
+#         print(request.POST)
+#         if form.is_valid():
+#             full_name = form.cleaned_data['first_name'] + ' ' + form.cleaned_data['last_name']
+#             job_title = job.title
+#             print(True)
+#             application = form.save(commit=False)
+#             application.job = job
+#             # application.save()
 
-            print(form.cleaned_data)
+#             print(form.cleaned_data)
         
-            subject = "Application Received – Neminath Wood Industry Pvt Ltd"
+#             subject = "Application Received – Neminath Wood Industry Pvt Ltd"
 
-            message = (
-                f"Hi {full_name},\n\n"
-                f"Thank you for your interest in Neminath Wood Industry Private Limited.\n"
-                f"We have successfully received your application for the position of {job_title}.\n\n"
-                f"Due to the high number of applications, we will contact only shortlisted "
-                f"candidates for the next stage of the recruitment process.\n\n"
-                f"Our team carefully reviews every application, so we appreciate your patience.\n\n"
-                f"Best regards,\n"
-                f"Neminath Wood Industry Private Limited\n"
-                f"Talent Acquisition Team"
-            )
+#             message = (
+#                 f"Hi {full_name},\n\n"
+#                 f"Thank you for your interest in Neminath Wood Industry Private Limited.\n"
+#                 f"We have successfully received your application for the position of {job_title}.\n\n"
+#                 f"Due to the high number of applications, we will contact only shortlisted "
+#                 f"candidates for the next stage of the recruitment process.\n\n"
+#                 f"Our team carefully reviews every application, so we appreciate your patience.\n\n"
+#                 f"Best regards,\n"
+#                 f"Neminath Wood Industry Private Limited\n"
+#                 f"Talent Acquisition Team"
+#             )
 
-            send_mail(
-                subject,
-                message,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[form.cleaned_data['email']],
-            )
-            messages.success(request, f'Your application for the position of {job_title} has been submitted successfully.Check Your mail for more details.Our team will review your application and get back to you soon.thank you for considering a career with Neminath Wood Industry Private Limited.')
-            return redirect('careers')
+#             send_mail(
+#                 subject,
+#                 message,
+#                 from_email=settings.DEFAULT_FROM_EMAIL,
+#                 recipient_list=[form.cleaned_data['email']],
+#             )
+#             messages.success(request, f'Your application for the position of {job_title} has been submitted successfully.Check Your mail for more details.Our team will review your application and get back to you soon.thank you for considering a career with Neminath Wood Industry Private Limited.')
+#             return redirect('careers')
         
-        else:
-            print(form.errors)
-            messages.error(request, 'There was an error with your submission. Please correct the errors below.')
-    else:
-        print(False)
-        form = JobApplicationForm()
+#         else:
+#             print(form.errors)
+#             messages.error(request, 'There was an error with your submission. Please correct the errors below.')
+#     else:
+#         print(False)
+#         form = JobApplicationForm()
 
 
-    return render(request, 'job_apply.html', {
-        'job': job,
-        'form': form
-    })
+#     return render(request, 'job_apply.html', {
+#         'job': job,
+#         'form': form
+#     })
 
 
-def products(request):
-    return render(request,'products.html')
+
 
 
 

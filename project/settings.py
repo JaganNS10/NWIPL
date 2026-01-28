@@ -165,5 +165,4 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  # your Brevo SMTP k
 
 DEFAULT_FROM_EMAIL = 'Neminath Wood Industry Private Limited <jagan10ns@gmail.com>'
 
-
 SITE_ID = 1
