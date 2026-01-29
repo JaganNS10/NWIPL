@@ -126,8 +126,8 @@ def job_apply(request, id):
                 f"Hi {full_name},\n\n"
                 f"Thank you for your interest in Neminath Wood Industry Private Limited.\n"
                 f"We have successfully received your application for the position of {job_title}.\n\n"
-                f"Our team will contact shortlisted candidates.\n\n"
-                f"Best regards,\nNeminath Wood Industry Pvt Ltd"
+                f"Our team will contact you if your profile matches the required position.\n\n"
+                f"Best regards,\nTalent Acquisition Team\nNeminath Wood Industry Pvt Ltd"
             )
             send_brevo_email(
                 sender_email="hr@nwipl.com",
@@ -175,10 +175,11 @@ def contact(request):
         last_name = request.POST.get('last-name')
         name = f"{first_name} {last_name}"
         email = request.POST.get('email')
+        contact_ = request.POST.get('contact')
         message_text = request.POST.get('message')
 
         subject = "New Enquiry from Website Contact Page"
-        body = f"Name: {name}\nEmail: {email}\nMessage: {message_text}"
+        body = f"Name: {name}\nEmail: {email}\nContact:{contact_}\nMessage: {message_text}"
 
         send_brevo_email(
             sender_email="hr@nwipl.com",
