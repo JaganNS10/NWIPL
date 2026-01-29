@@ -76,6 +76,16 @@ def contact(request):
         first_name = request.POST.get('first-name')
         last_name = request.POST.get('last-name')
         name = first_name + " " +last_name
+        email = request.POST.get('email')
+        message_ = request.POST.get('message')
+        subject = "New Enquiry from Website Contact Page"
+        message = f"You have received a new enquiry through the website contact page. Please find the details below\nName: {name}\nEmail: {email}\nMessage: {message_}"
+        send_mail(
+            subject,
+            message,
+            from_email='hr@nwipl.com',
+            recipient_list=['hr@nwipl.com']
+        )
         messages.success(request, f"“Thank you {name} for contacting Neminath Wood Industry Private Limited. We will contact you shortly!”✅")
 
         return redirect('Home')
@@ -120,6 +130,32 @@ def job_apply(request, id):
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[form.cleaned_data['email']],
             )
+
+
+            email = form.cleaned_data['email']
+            Contact = form.cleaned_data['contact']
+            year_of_graduation = form.cleaned_data['year_of_graduation']
+            gender = form.cleaned_data['gender']
+            experience = form.cleaned_data['experience_years']
+            notice_period = form.cleaned_data['notice_period']
+            current_employer = form.cleaned_data['current_employer']
+            current_ctc = form.cleaned_data['current_ctc']
+            expected_ctc = form.cleaned_data['expected_ctc']
+            current_location = form.cleaned_data['current_location']
+            resume = request.FILES['resume'] 
+            subject = f"Job Application from {full_name}"
+            message = f"{full_name} has applied for a {job_title}.\nEmail: {email}\nContact: {Contact}\ngender: {gender}\nYear of graduation: {year_of_graduation}\nexperience: {experience}\ncurrent employer: {current_employer}\nnotice_period: {notice_period}\nCurrent ctc: {current_ctc}\nExpected ctc: {expected_ctc}\ncurrent location: {current_location}"
+            hr_email = 'hr@nwipl.com'
+
+            email_msg = EmailMessage(
+                subject,
+                message,
+                'hr@nwipl.com',
+                [hr_email],                
+            )
+            email_msg.attach(resume.name, resume.read(), resume.content_type)
+            email_msg.send()
+
             print("Email sent successfully")
             messages.success(request, f'Your application for the position of {job_title} has been submitted successfully.Check Your mail for more details.Our team will review your application and get back to you soon.thank you for considering a career with Neminath Wood Industry Private Limited.')
             return redirect('careers')
