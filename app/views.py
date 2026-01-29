@@ -13,6 +13,7 @@ from django.core.mail.backends.smtp import EmailBackend
 import os
 import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
+from django.core.mail import EmailMessage
 
 
 def Home(request):
@@ -174,7 +175,6 @@ def job_apply(request, id):
     })
 
 
-from django.core.mail import EmailMessage
 
 # def send_resume(request):
 #     if request.method == 'POST':
