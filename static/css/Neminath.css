@@ -420,6 +420,49 @@ button.btn-success {
     }
 }
 
+/* contactform message  */
+
+.messages {
+  position: fixed; /* fixed at top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.message {
+  display: inline-block;
+  padding: 12px 25px;
+  margin: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Success message styling */
+.message.success {
+  background: #4CAF50; /* green */
+}
+
+/* Info message */
+.message.info {
+  background: #2196F3; /* blue */
+}
+
+/* Error message */
+.message.error {
+  background: #f44336; /* red */
+}
+
+/* Warning message */
+.message.warning {
+  background: #ff9800; /* orange */
+}
+
+
 /*---------------------------------------
   CUSTOM BUTTON               
 -----------------------------------------*/
