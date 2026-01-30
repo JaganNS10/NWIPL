@@ -129,13 +129,13 @@ def job_apply(request, id):
                 f"Our team will contact you if your profile matches the required position.\n\n"
                 f"Best regards,\nTalent Acquisition Team\nNeminath Wood Industry Pvt Ltd"
             )
-            send_brevo_email(
-                sender_email="hr@nwipl.com",
-                sender_name="Neminath Wood Industry Pvt Ltd",
-                to_email=form.cleaned_data['email'],
-                subject=subject_user,
-                text_content=message_user
-            )
+            # send_brevo_email(
+            #     sender_email="hr@nwipl.com",
+            #     sender_name="Neminath Wood Industry Pvt Ltd",
+            #     to_email=form.cleaned_data['email'],
+            #     subject=subject_user,
+            #     text_content=message_user
+            # )
 
             # HR notification email with resume
             resume = request.FILES['resume']
@@ -145,16 +145,16 @@ def job_apply(request, id):
                 f"Email: {form.cleaned_data['email']}\n"
                 f"Contact: {form.cleaned_data['contact']}\n"
             )
-            send_brevo_email(
-                sender_email="hr@nwipl.com",
-                sender_name="Neminath Wood Industry Pvt Ltd",
-                to_email="hr@nwipl.com",
-                subject=subject_hr,
-                text_content=message_hr,
-                attachment=resume,
-                attachment_name=resume.name,
-                attachment_type=resume.content_type
-            )
+            # send_brevo_email(
+            #     sender_email="hr@nwipl.com",
+            #     sender_name="Neminath Wood Industry Pvt Ltd",
+            #     to_email="hr@nwipl.com",
+            #     subject=subject_hr,
+            #     text_content=message_hr,
+            #     attachment=resume,
+            #     attachment_name=resume.name,
+            #     attachment_type=resume.content_type
+            # )
 
             messages.success(
                 request,
@@ -181,13 +181,13 @@ def contact(request):
         subject = "New Enquiry from Website Contact Page"
         body = f"Name: {name}\nEmail: {email}\nContact:{contact_}\nMessage: {message_text}"
 
-        send_brevo_email(
-            sender_email="hr@nwipl.com",
-            sender_name="Neminath Wood Industry Pvt Ltd",
-            to_email="hr@nwipl.com",
-            subject=subject,
-            text_content=body
-        )
+        # send_brevo_email(
+        #     sender_email="hr@nwipl.com",
+        #     sender_name="Neminath Wood Industry Pvt Ltd",
+        #     to_email="hr@nwipl.com",
+        #     subject=subject,
+        #     text_content=body
+        # )
 
         messages.success(request, f"Thank you {name} for contacting Neminath Wood Industry Pvt Ltd. We will contact you shortly!")
         return redirect('Home')
