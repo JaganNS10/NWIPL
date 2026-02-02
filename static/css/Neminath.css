@@ -629,11 +629,6 @@ button.btn-success {
 }
 
 
-
-
-
-
-
 @media screen and (min-width: 992px) {
   .dropdown:hover .dropdown-menu {
     display: block;
@@ -641,7 +636,7 @@ button.btn-success {
   }
 }
 
-.navbar-toggler {
+/* .navbar-toggler {
   border: 0;
   padding: 0;
   cursor: pointer;
@@ -697,6 +692,34 @@ button.btn-success {
   width: 30px;
   height: 2px;
   content: '';
+}
+
+.navbar-toggler .navbar-toggler-icon::before {
+  top: -8px;
+}
+
+.navbar-toggler .navbar-toggler-icon::after {
+  top: 8px;
+} */
+.navbar-toggler .navbar-toggler-icon {
+  background: white; /* main bar */
+  transition: background 10ms 300ms ease;
+  display: block;
+  width: 30px;
+  height: 2px;
+  position: relative;
+}
+
+.navbar-toggler .navbar-toggler-icon:before,
+.navbar-toggler .navbar-toggler-icon:after {
+  background: white; /* top and bottom bars */
+  position: absolute;
+  right: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  content: '';
+  transition: top 300ms 350ms ease, transform 300ms 50ms ease;
 }
 
 .navbar-toggler .navbar-toggler-icon::before {
