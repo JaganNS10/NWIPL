@@ -705,39 +705,11 @@ button.btn-success {
 }
 
 
-/* .navbar-toggler .navbar-toggler-icon {
-  background: white;
-  transition: background 10ms 300ms ease;
-  display: block;
-  width: 30px;
-  height: 2px;
-  position: relative;
-}
-
-.navbar-toggler .navbar-toggler-icon:before,
-.navbar-toggler .navbar-toggler-icon:after {
-  background: white;
-  position: absolute;
-  right: 0;
-  left: 0;
-  width: 30px;
-  height: 2px;
-  content: '';
-  transition: top 300ms 350ms ease, transform 300ms 50ms ease;
-}
-
-.navbar-toggler .navbar-toggler-icon::before {
-  top: -8px;
-}
-
-.navbar-toggler .navbar-toggler-icon::after {
-  top: 8px;
-} */
 
 
 
 /* Section spacing */
-.services {
+/* .services {
   margin-top: 80px;
   padding: 60px 0;
   background: linear-gradient(
@@ -747,8 +719,6 @@ button.btn-success {
     #223047 100%
   );
 }
-
-/* Heading */
 .services .client {
   font-size: 32px;
   font-weight: 600;
@@ -758,12 +728,12 @@ button.btn-success {
 }
 
 
-/* Carousel item spacing */
+
 .owl-service-item .item {
   padding: 10px;
 }
 
-/* Logo image styling */
+
 .owl-service-item .item img {
   width: 100%;
   height: 200px;
@@ -775,13 +745,12 @@ button.btn-success {
   transition: transform 0.3s ease;
 }
 
-/* Hover effect */
 .owl-service-item .item img:hover {
   transform: scale(1.05);
 }
 
 
-/* Make dots visible */
+
 .owl-dots {
   display: block !important;
   position: relative;
@@ -790,7 +759,7 @@ button.btn-success {
   z-index: 999;
 }
 
-/* Style dots */
+
 .owl-dot {
   width: 12px;
   height: 12px;
@@ -801,7 +770,7 @@ button.btn-success {
   cursor: pointer;
 }
 
-/* Active dot */
+
 .owl-dot.active {
   background: #5a3b1f !important;
   transform: scale(1.3);
@@ -826,8 +795,64 @@ button.btn-success {
 .custom-dots .dot.active {
   background: #5a3b1f;
   transform: scale(1.3);
+} */
+
+
+/* Section styling */
+.services {
+  margin-top: 80px;
+  padding: 60px 0;
+  background: linear-gradient(135deg, #141C2A 0%, #1E2A3A 45%, #223047 100%);
 }
 
+.services .client {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: white;
+  text-align: center;
+}
+
+/* Slider wrapper */
+.logo-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* Track: all logos in a row */
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 40s linear infinite; /* Adjust speed by changing 30s */
+}
+
+/* Each logo item */
+.logo-track .item {
+  flex: 0 0 auto;
+  margin: 0 15px;
+}
+
+.logo-track .item img {
+  width:200px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 20px;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.logo-track .item img:hover {
+  transform: scale(1.05);
+}
+
+/* Scroll animation */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* move half track for infinite loop */
+}
 
 
 /*---------------------------------------

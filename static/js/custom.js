@@ -71,8 +71,70 @@
 
 
 
-$(document).ready(function () {
+// $(document).ready(function () {
 
+//   var owl = $('.owl-service-item');
+
+//   owl.owlCarousel({
+//     items: 4,
+//     loop: true,
+//     margin: 15,
+//     autoplay: true,
+//     autoplayTimeout: 3000,
+//     autoplayHoverPause: true,
+//     dots: false,
+//     nav: false,
+//     smartSpeed: 800,
+//     responsive: {
+//       0: { items: 1 },
+//       600: { items: 2 },
+//       1000: { items: 4 }
+//     }
+//   });
+
+//   // Create 3 dots
+//   function createThreeDots() {
+//     $('.custom-dots').remove();
+
+//     var dotHTML = '<div class="custom-dots">';
+//     for (var i = 0; i < 3; i++) {
+//       dotHTML += '<span class="dot" data-page="' + i + '"></span>';
+//     }
+//     dotHTML += '</div>';
+
+//     owl.after(dotHTML);
+
+//     // click dots
+//     $('.custom-dots .dot').click(function () {
+
+//       // Pause autoplay
+//       owl.trigger('stop.owl.autoplay');
+
+//       var page = $(this).data('page');
+//       owl.trigger('to.owl.carousel', [page * 4, 800]); // move to each group
+
+//       $('.custom-dots .dot').removeClass('active');
+//       $(this).addClass('active');
+//     });
+
+//     $('.custom-dots .dot').first().addClass('active');
+//   }
+
+//   createThreeDots();
+
+//   // Update active dot based on current position
+//   owl.on('changed.owl.carousel', function (event) {
+//     var current = event.item.index;
+//     var perPage = event.page.size;
+//     var dotIndex = Math.floor(current / perPage) % 3;
+
+//     $('.custom-dots .dot').removeClass('active');
+//     $('.custom-dots .dot').eq(dotIndex).addClass('active');
+//   });
+
+// });
+
+$(document).ready(function () {
   var owl = $('.owl-service-item');
 
   owl.owlCarousel({
@@ -92,26 +154,26 @@ $(document).ready(function () {
     }
   });
 
-  // Create 3 dots
-  function createThreeDots() {
+  function createCustomDots() {
     $('.custom-dots').remove();
 
+    // Calculate total pages based on items and total slides
+    var totalItems = owl.find('.item').length;
+    var itemsPerPage = owl.data('owl.carousel') ? owl.data('owl.carousel').options.items : 4;
+    var totalPages = Math.ceil(totalItems / itemsPerPage);
+
     var dotHTML = '<div class="custom-dots">';
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < totalPages; i++) {
       dotHTML += '<span class="dot" data-page="' + i + '"></span>';
     }
     dotHTML += '</div>';
 
     owl.after(dotHTML);
 
-    // click dots
     $('.custom-dots .dot').click(function () {
-
-      // Pause autoplay
       owl.trigger('stop.owl.autoplay');
-
       var page = $(this).data('page');
-      owl.trigger('to.owl.carousel', [page * 4, 800]); // move to each group
+      owl.trigger('to.owl.carousel', [page * itemsPerPage, 800]);
 
       $('.custom-dots .dot').removeClass('active');
       $(this).addClass('active');
@@ -120,20 +182,19 @@ $(document).ready(function () {
     $('.custom-dots .dot').first().addClass('active');
   }
 
-  createThreeDots();
+  createCustomDots();
 
-  // Update active dot based on current position
   owl.on('changed.owl.carousel', function (event) {
     var current = event.item.index;
     var perPage = event.page.size;
-    var dotIndex = Math.floor(current / perPage) % 3;
+    var totalItems = event.item.count;
+    var totalPages = Math.ceil(totalItems / perPage);
 
+    var dotIndex = Math.floor(current / perPage) % totalPages;
     $('.custom-dots .dot').removeClass('active');
     $('.custom-dots .dot').eq(dotIndex).addClass('active');
   });
-
 });
-
 
 
 
