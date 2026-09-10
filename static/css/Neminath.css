@@ -962,7 +962,7 @@ button.btn-success {
   background-image: url('../images/BabyCot/nwibc1a.jpeg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size:cover;
+  background-size:contain;
   padding-top:400px;
   padding-bottom:100px;
 }
