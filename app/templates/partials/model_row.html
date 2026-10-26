@@ -1,0 +1,15 @@
+{% load static %}
+<article class="nw-prod {% if flip %}nw-flip{% endif %}">
+  <img class="nw-prod-img" src="{% static img %}" alt="{{ code }} Baby Cot">
+  <div>
+    <span class="nw-code">{{ code }}</span>
+    <h2>{{ code }}</h2>
+    <p>{{ text }}</p>
+    <ul class="nw-specs">
+      <li><b>Material</b><span>{{ material }}</span></li>
+      <li><b>Finish</b><span>{{ finish }}</span></li>
+      <li><b>Joinery</b><span>Dowel &amp; barrel-nut construction</span></li>
+      <li><b>Variant</b><span>{{ variant }}</span></li>
+    </ul>
+  </div>
+</article>

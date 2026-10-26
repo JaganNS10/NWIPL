@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="nw-pagehero">
+  <div class="nw-wrap"><h1>{% block h1 %}{% endblock %}</h1></div>
+</section>
+
+<section class="nw-section">
+  <div class="nw-wrap">
+    <div class="nw-prod" style="padding-top:0">
+      <img class="nw-prod-img nw-wideimg" src="{% block intro_img %}{% endblock %}" alt="">
+      <div>
+        <h2>{% block intro_title %}{% endblock %}</h2>
+        {% block intro_text %}{% endblock %}
+      </div>
+    </div>
+    <div class="nw-prod nw-flip">
+      <img class="nw-prod-img nw-wideimg" src="{% block about_img %}{% endblock %}" alt="">
+      <div>
+        <h2>{% block about_title %}{% endblock %}</h2>
+        {% block about_text %}{% endblock %}
+      </div>
+    </div>
+    <div class="nw-gallery">
+      {% block gallery %}{% endblock %}
+    </div>
+  </div>
+</section>
+{% endblock %}

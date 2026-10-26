@@ -1,818 +1,120 @@
+{% extends 'base.html' %}
 {% load static %}
-<!doctype html>
-<html lang="en">
-    <head>
-
-        <title>Neminath Wood Industry (P) Ltd| Best Product Manufacturer</title>
-
-        <link rel="icon" href="{% static 'images/NWIPLLOGO.png' %}" type="image/png">
-
-        <meta charset="utf-8">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <meta name="description" content="Neminath Wood Industry is a leading wood products manufacturer in India. We deliver high-quality wooden furniture and materials." />
-
-        <meta name="keywords" content="Neminath Wood Industry, wood manufacturer, wooden furniture, plywood, timber, wooden products" />
-
-        <link rel="canonical" href="https://www.nwipl.com/" />
-
-        
-        <!-- CSS FILES -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-        <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;300;400;600;700&display=swap" rel="stylesheet">
-
-        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
-        <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
-
-        <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
-
-        <link href="{% static 'css/Neminath.css' %}" rel="stylesheet">
-
-        
-
-    </head>
-    
-    <body>
-        {% if messages %}
-                <div class="messages">
-                    {% for message in messages %}
-                    <div class="message {{ message.tags }}">
-                        {{ message }}
-                    </div>
-                    {% endfor %}
-                </div>
-        {% endif %}
-        <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
-            <div class="container">
-
-                <a class="navbar-brand" href="{% url 'Home' %}">
-                    <div class="brand-wrapper">
-                        <!-- <img src="{% static 'images/NWIPLLOGO.png' %}" alt="NWI Logo"> -->
-                        <img src="{% static 'images/nwi-logo-flat.png' %}" alt="NWI Logo">
-                    </div>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="{% url 'Home' %}">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="{% url 'Home' %}">About</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle click-scroll" href="#section_3" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Our Products</a>
-
-                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'products' %}">Neminath Product Collections</a></li>
-                                <li><a class="dropdown-item" href="{% url 'BabyCot' %}">Baby Cot Collection</a></li>
-                                <li><a class="dropdown-item" href="{% url 'ClassicRanges' %}">Classic Ranges</a></li>
-                                <li><a class="dropdown-item" href="{% url 'SkinRanges' %}">Skin Ranges</a></li>
-                                <li><a class="dropdown-item" href="{% url 'VeneerRanges' %}">Veneer Ranges</a></li>
-                                <li><a class="dropdown-item" href="{% url 'LaminateRanges' %}">Laminate Ranges</a></li>
-                                <li><a class="dropdown-item" href="{% url 'LightOpeningRanges' %}">Light Opening Ranges</a></li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_4">Our Client</a> 
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_5">Contact</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle click-scroll" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Residence</a>
-
-                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                
-                                <li><a class="dropdown-item" href="{% url 'Furnitureforkids' %}">Furniture for Kids</a></li>
-                                <li><a class="dropdown-item" href="{% url 'Tvunit' %}">TV Unit</a></li>
-                                <li><a class="dropdown-item" href="{% url 'Wardrobe' %}">Wardrobe</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle click-scroll" href="" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Our facility</a>
-
-                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'seasoningchamber' %}">Seasoning Chamber</a></li>
-                                <li>
-                                    <a class="nav-link click-scroll" href="{% url 'Corporate' %}">Corporate</a>
-                                </li>
-                            </ul>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="{% url 'careers' %}">Careers</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main>
-
-            <section class="hero-section hero-slide d-flex justify-content-center align-items-center" id="section_1">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-8 col-12 text-center mx-auto">
-                            <div class="hero-section-text">
-                                <small class="section-small-titlee">Welcome to Neminath wood (P) Ltd<i class="hero-icon bi-house"></i></small>
-
-                                <h1 class="hero-title text-white mt-2 mb-4">Design Your Dream Home with Neminath Wood Industry</h1>
-
-                                <form class="custom-form hero-form" action="#" method="get" role="form">
-                                    <div class="row">
-                                        <p class="tooplate-red">
-                                            Crafting Elegant Interiors with Quality Doors and Furniture.
-                                            Experience designs that combine style, comfort, and lasting craftsmanship.
-                                        </p>
-
-                                    </div>
-                                </form>
-
-                                <div class="hero-btn d-flex justify-content-center align-items-center">
-                                    <a class="bi-arrow-down hero-btn-link smoothscroll" href="#section_2"></a>
-                                </div> 
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <section class="about-section section-padding" id="section_2">
-                <div class="container">
-                    <div class="row align-items-center">
-
-                        <div class="col-lg-5 col-12">
-                            <small class="section-small-title">Our Story</small>
-
-                            <h2 class="mt-2 mb-4"><span class="text-muted">Introducing</span> Neminath</h2>
-
-                            <h4 class="text-white mb-3">Since 2018, Neminath Wood Industry has been crafting high-quality doors, furniture, and interiors to elevate every space.</h4>
-
-                            <p>
-                                Neminath Wood Industry transforms spaces with beautifully crafted doors, furniture, and interior solutions. Our expert team designs and manufactures products using the finest wood, veneers, laminates, and modern materials to create interiors that combine elegance, durability, and style.
-                                From classic doors to furniture,kids furniture and corporate furniture, every piece is thoughtfully designed to enhance your environment while reflecting modern aesthetics. At Neminath Wood, we bring creativity, quality, and innovation together to elevate every space we touch.
-                            </p>
-                        </div>
-
-                        <div class="col-lg-3 col-md-5 col-5 mx-lg-auto">
-                            <img src="{% static 'images/background2.jpg' %}" class="about-image about-image-small img-fluid" alt="">
-                        </div>
-
-                        <div class="col-lg-4 col-md-7 col-7">
-                            <img src="{% static 'images/featured-compressed-46.jpg' %}" class="about-image img-fluid" alt="">
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-
-            <section class="featured-section section-padding">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-5 col-12">
-                            <div class="custom-block featured-custom-block">
-                                <h2 class="mt-2 mb-4">Opening Hours</h2>
-
-                                <div class="d-flex">
-                                    <i class="featured-icon bi-clock me-3"></i>
-                                    
-                                    <div>
-                                        <p class="mb-2">
-                                            Mon - Friday ~
-                                            <strong class="d-inline">
-                                                9:00 AM - 6:00 PM
-                                            </strong>
-                                        </p>
-
-                                        <p class="mb-2">
-                                            Saturday ~ 2nd and 4th
-                                            <strong class="d-inline">
-                                                9:00 AM - 6:00 PM
-                                            </strong>
-                                        </p>
-
-                                        <p>Sunday ~ Closed</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-
-            <section class="shop-section section-padding" id="section_3">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-12 col-12">
-                            <small class="section-small-title">Neminath Design Shop</small>
-
-                            <h2 class="mt-2 mb-4"><span class="tooplate-red">Neminath Wood Industry - </span> <span class="tooplate-green">Interior Products</span></h2>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <div class="shop-thumb">
-                                <div class="shop-image-wrap">
-                                    <a href="#section_5">
-                                        <img src="{% static 'images/shop/Interiordesign.jpg' %}" class="shop-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="shop-icons-wrap">
-                                        <div class="shop-icons d-flex flex-column align-items-center">
-                                            <a href="#" class="shop-icon bi-heart"></a>
-
-                                            <a href="#" class="shop-icon bi-bookmark"></a>
-                                        </div>
-
-                                        <!-- <p class="shop-pricing mb-0 mt-3">
-                                            <span class="badge custom-badge">$3,600</span>
-                                        </p> -->
-                                    </div>
-
-                                    <div class="shop-btn-wrap">
-                                        <a href="#section_5" class="shop-btn custom-btn btn d-flex align-items-center align-items-center">Learn more</a>
-                                    </div>
-                                </div>
-
-                                <div class="shop-body">
-                                    <h5 class="tooplate-green">Luxury wooden interior furniture</h5>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <div class="shop-thumb">
-                                <div class="shop-image-wrap">
-                                    <a href="#section_5">
-                                        <img src="{% static 'images/shop/mock-up-poster-modern-dining-room-interior-design-with-white-empty-wall.jpg' %}" class="shop-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="shop-icons-wrap">
-                                        <div class="shop-icons d-flex flex-column align-items-center">
-                                            <a href="#" class="shop-icon bi-heart"></a>
-
-                                            <a href="#" class="shop-icon bi-bookmark"></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="shop-btn-wrap">
-                                        <a href="#section_5" class="shop-btn custom-btn btn d-flex align-items-center align-items-center">Learn more</a>
-                                    </div>
-                                </div>
-
-                                <div class="shop-body">
-                                    <h5 class="tooplate-green">Modern dining room with wooden furniture</h5>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-12">
-                            <div class="shop-thumb">
-                                <div class="shop-image-wrap">
-                                    <a href="#section_5">
-                                        <img src="{% static 'images/shop/green-sofa-white-living-room-with-blank-table-mockup.jpg' %}" class="shop-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="shop-icons-wrap">
-                                        <div class="shop-icons d-flex flex-column align-items-center">
-                                            <a href="#" class="shop-icon bi-heart"></a>
-
-                                            <a href="#" class="shop-icon bi-bookmark"></a>
-                                        </div>
-
-                                        <!-- <p class="shop-pricing mb-0 mt-3">
-                                            <span class="badge custom-badge">$2,400</span>
-                                        </p> -->
-                                    </div>
-
-                                    <div class="shop-btn-wrap">
-                                        <a href="#section_5" class="shop-btn custom-btn btn d-flex align-items-center align-items-center">Learn more</a>
-                                    </div>
-                                </div>
-
-                                <div class="shop-body">
-                                    <h5 class="tooplate-green">Living Room</h5>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-12">
-                            <div class="shop-thumb">
-                                <div class="shop-image-wrap">
-                                    <a href="#section_5">
-                                        <img src="{% static 'images/shop/concept-home-cooking-with-female-chef.jpg' %}" class="shop-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="shop-icons-wrap">
-                                        <div class="shop-icons d-flex flex-column align-items-center">
-                                            <a href="#" class="shop-icon bi-heart"></a>
-
-                                            <a href="#" class="shop-icon bi-bookmark"></a>
-                                        </div>
-
-                                        <!-- <p class="shop-pricing mb-0 mt-3">
-                                            <span class="badge custom-badge">$3,800</span>
-                                        </p> -->
-                                    </div>
-
-                                    <div class="shop-btn-wrap">
-                                        <a href="#section_5" class="shop-btn custom-btn btn d-flex align-items-center align-items-center">Learn more</a>
-                                    </div>
-                                </div>
-
-                                <div class="shop-body">
-                                    <h5 class="tooplate-green">Chef Kitchen</h5>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-12">
-                            <div class="shop-thumb">
-                                <div class="shop-image-wrap">
-                                    <a href="#section_5">
-                                        <img src="{% static 'images/shop/childrens-bed-nursery-cot-velvet-childrens-room.jpg' %}" class="shop-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="shop-icons-wrap">
-                                        <div class="shop-icons d-flex flex-column align-items-center">
-                                            <a href="#" class="shop-icon bi-heart"></a>
-
-                                            <a href="#" class="shop-icon bi-bookmark"></a>
-                                        </div>
-
-                                        <!-- <p class="shop-pricing mb-0 mt-3">
-                                            <span class="badge custom-badge">$850</span>
-                                        </p> -->
-                                    </div>
-
-                                    <div class="shop-btn-wrap">
-                                        <a href="shop-detail.html" class="shop-btn custom-btn btn d-flex align-items-center align-items-center">Learn more</a>
-                                    </div>
-                                </div>
-
-                                <div class="shop-body">
-                                    <h5 class="tooplate-green">Childrens Bedroom</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="shop-thumb">
-                                <div class="shop-image-wrap">
-                                    <a href="#section_5">
-                                        <img src="{% static 'images/shop/Victorian-Dining-Table.jpg' %}" class="shop-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="shop-icons-wrap">
-                                        <div class="shop-icons d-flex flex-column align-items-center">
-                                            <a href="#" class="shop-icon bi-heart"></a>
-
-                                            <a href="#" class="shop-icon bi-bookmark"></a>
-                                        </div>
-
-                                        <!-- <p class="shop-pricing mb-0 mt-3">
-                                            <span class="badge custom-badge">$850</span>
-                                        </p> -->
-                                    </div>
-
-                                    <div class="shop-btn-wrap">
-                                        <a href="#section_5" class="shop-btn custom-btn btn d-flex align-items-center align-items-center">Learn more</a>
-                                    </div>
-                                </div>
-
-                                <div class="shop-body">
-                                    <h5 class="tooplate-green">Wooden dining chairs and table set</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="shop-thumb">
-                                <div class="shop-image-wrap">
-                                    <a href="#section_5">
-                                        <img src="{% static 'images/shop/Wooden-Wardrobe-Designs.jpg' %}" class="shop-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="shop-icons-wrap">
-                                        <div class="shop-icons d-flex flex-column align-items-center">
-                                            <a href="#" class="shop-icon bi-heart"></a>
-
-                                            <a href="#" class="shop-icon bi-bookmark"></a>
-                                        </div>
-
-                                        <!-- <p class="shop-pricing mb-0 mt-3">
-                                            <span class="badge custom-badge">$850</span>
-                                        </p> -->
-                                    </div>
-
-                                    <div class="shop-btn-wrap">
-                                        <a href="#section_5" class="shop-btn custom-btn btn d-flex align-items-center align-items-center">Learn more</a>
-                                    </div>
-                                </div>
-
-                                <div class="shop-body">
-                                    <h5 class="tooplate-green">Wardrobe</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="shop-thumb">
-                                <div class="shop-image-wrap">
-                                    <a href="#section_5">
-                                        <img src="{% static 'images/shop/bedroomdesign.jpg' %}" class="shop-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="shop-icons-wrap">
-                                        <div class="shop-icons d-flex flex-column align-items-center">
-                                            <a href="#" class="shop-icon bi-heart"></a>
-
-                                            <a href="#" class="shop-icon bi-bookmark"></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="shop-btn-wrap">
-                                        <a href="#section_5" class="shop-btn custom-btn btn d-flex align-items-center align-items-center">Learn more</a>
-                                    </div>
-                                </div>
-
-                                <div class="shop-body">
-                                    <h5 class="tooplate-green">Elegant bedroom furniture</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- <section class="services" id="section_4">
-                <div class="container">
-                    
-                    <div class="section-heading text-center">
-                        <h1 class="client">Our Clients</h1>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-
-                            <div class="owl-service-item owl-carousel">
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/akshayalogo.jpg' %}" alt="Akshaya">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/bharatiyafashion.webp' %}" alt="Bharatiya Fashion">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/bscpl.webp' %}" alt="BSCPL">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/Casagrandlogo.webp' %}" alt="Casagrand">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/eticadevelopers.jpg' %}" alt="Etica Developers">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/j-stilologo.jpg' %}" alt="J Stilo">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/navins.png' %}" alt="Navins">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/nxghomes.jpg' %}" alt="NXG Homes">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/RWD-logo.png' %}" alt="RWD">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/lifestyle-new.png' %}" alt="Lifestyle">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/babyshop-new.png' %}" alt="Babyshop">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/htl-logo.png' %}" alt="HTL">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/s&s.png' %}" alt="S&S">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/shriramproperities.jpg' %}" alt="Shriram">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/syconconstruction.png' %}" alt="Sycon">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/tvh.png' %}" alt="TVH">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/Innovative.png' %}" alt="Innovative">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/homecentre-new.png' %}" alt="Home Centre">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/centrepoint-new.png' %}" alt="Centrepoint">
-                                </div>
-
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/NewCentury.png' %}" alt="New Century">
-                                </div>
-                                <div class="item">
-                                    <img src="{% static 'images/clientlogos/vodafone.jpg' %}" alt="Vodafone">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
-
-
-            <section class="services" id="section_4">
-                <div class="container">
-                    <div class="section-heading text-center">
-                    <h1 class="client">Our Clients</h1>
-                    </div>
-
-                    <div class="logo-slider">
-                    <div class="logo-track">
-                        <div class="item"><img src="{% static 'images/clientlogos/akshayalogo.jpg' %}" alt="Akshaya"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/bharatiyafashion.webp' %}" alt="Bharatiya Fashion"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/bscpl.webp' %}" alt="BSCPL"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/Casagrandlogo.webp' %}" alt="Casagrand"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/eticadevelopers.jpg' %}" alt="Etica Developers"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/j-stilologo.jpg' %}" alt="J Stilo"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/navins.png' %}" alt="Navins"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/nxghomes.jpg' %}" alt="NXG Homes"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/RWD-logo.png' %}" alt="RWD"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/lifestyle-new.png' %}" alt="Lifestyle"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/babyshop-new.png' %}" alt="Babyshop"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/htl-logo.png' %}" alt="HTL"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/s&s.png' %}" alt="S&S"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/shriramproperities.jpg' %}" alt="Shriram"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/syconconstruction.png' %}" alt="Sycon"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/tvh.png' %}" alt="TVH"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/Innovative.png' %}" alt="Innovative"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/homecentre-new.png' %}" alt="Home Centre"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/centrepoint-new.png' %}" alt="Centrepoint"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/NewCentury.png' %}" alt="New Century"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/vodafone.jpg' %}" alt="Vodafone"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/bbcl.webp' %}" alt="bbcl"></div>
-
-                        <!-- Repeat logos for smooth loop -->
-
-                        <div class="item"><img src="{% static 'images/clientlogos/akshayalogo.jpg' %}" alt="Akshaya"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/bharatiyafashion.webp' %}" alt="Bharatiya Fashion"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/bscpl.webp' %}" alt="BSCPL"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/Casagrandlogo.webp' %}" alt="Casagrand"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/eticadevelopers.jpg' %}" alt="Etica Developers"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/j-stilologo.jpg' %}" alt="J Stilo"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/navins.png' %}" alt="Navins"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/nxghomes.jpg' %}" alt="NXG Homes"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/RWD-logo.png' %}" alt="RWD"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/lifestyle-new.png' %}" alt="Lifestyle"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/babyshop-new.png' %}" alt="Babyshop"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/htl-logo.png' %}" alt="HTL"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/s&s.png' %}" alt="S&S"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/shriramproperities.jpg' %}" alt="Shriram"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/syconconstruction.png' %}" alt="Sycon"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/tvh.png' %}" alt="TVH"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/Innovative.png' %}" alt="Innovative"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/homecentre-new.png' %}" alt="Home Centre"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/centrepoint-new.png' %}" alt="Centrepoint"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/NewCentury.png' %}" alt="New Century"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/vodafone.jpg' %}" alt="Vodafone"></div>
-                        <div class="item"><img src="{% static 'images/clientlogos/bbcl.webp' %}" alt="bbcl"></div>
-                    </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="contact-section" id="section_5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f9f9f9" fill-opacity="1" d="M0,96L40,117.3C80,139,160,181,240,186.7C320,192,400,160,480,149.3C560,139,640,149,720,176C800,203,880,245,960,250.7C1040,256,1120,224,1200,229.3C1280,235,1360,277,1400,298.7L1440,320L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-12 col-12">
-                            <small class="section-small-title">Ask anything.</small>
-
-                            <h2 class="mb-4">Say Hello</h2>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <form class="custom-form contact-form" action="{% url 'contact' %}" method="post" role="form">
-                                {% csrf_token %}
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="input-group align-items-center">
-                                            <label for="first-name">First Name</label>
-
-                                            <input type="text" name="first-name" id="first-name" class="form-control" placeholder="Jack" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="input-group align-items-center">
-                                            <label for="last-name">Last Name</label>
-
-                                            <input type="text" name="last-name" id="last-name" class="form-control" placeholder="Doe" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="input-group align-items-center">
-                                    <label for="contact">Contact Number</label>
-
-                                     <input type="text" name="contact" id="contact"  class="form-control" placeholder="+91 9087...." required>
-                                </div>
-                                <div class="input-group align-items-center">
-                                    <label for="email">Email Address</label>
-
-                                     <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Jackdoe@gmail.com" required>
-                                </div>
-
-                                <div class="input-group textarea-group">
-                                    <label for="message">Message</label>
-
-                                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="What can we help you?"></textarea>
-                                </div>
-
-                                <div class="col-lg-3 col-md-4 col-6">
-                                    <button type="submit" class="form-control">Send</button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                            <div class="custom-block">
-
-                                <h3 class="text-white mb-2">Facility</h3>
-
-                                <p class="text-white mb-2">
-                                    <i class="contact-icon bi-geo-alt me-1"></i>
-
-                                    No: 217/1A, Bandikavanoor Village, Sholavar, Chennai, Tiruvallur - 600067
-                                </p>
-
-                                <h3 class="text-white mt-3 mb-2">Contact Info</h3>
-
-                                <div class="d-flex flex-wrap">
-                                    <p class="text-white mb-2 me-4">
-                                        <i class="contact-icon bi-telephone me-1"></i>
-
-                                        <a href="tel: 090-080-0760" class="text-white">
-                                            +91 81225 07384
-                                        </a>
-                                    </p>
-
-                                    <p class="text-white">
-                                        <i class="contact-icon bi-envelope me-1"></i>
-
-                                        <a href="mailto:info@company.com" class="text-white">
-                                            neminathwoodindustry.pvt.ltd@gmail.com
-                                        </a>
-                                    </p>
-                                </div>
-                                <!-- <iframe class="google-map mt-2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4800.184803804974!2d-0.10174304922518053!3d51.5087879746898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487605f6fc62fa3d%3A0xc5a39e7cf4e3a9a4!2sTate%20Modern%20Garden!5e1!3m2!1sen!2smm!4v1679331839559!5m2!1sen!2smm" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
-                                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3883.2962065455777!2d80.13535999999999!3d13.269421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTPCsDE2JzA5LjkiTiA4MMKwMDgnMDcuMyJF!5e0!3m2!1sen!2sin!4v1767947055389!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
-
-                               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3701.26577691135!2d80.13302157485984!3d13.269481387073986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a527f00411a1acf%3A0x607eee171c38f4b8!2sNeminath%20Wood%20Industry%20%E2%80%93%20Main%20Factory!5e1!3m2!1sen!2sin!4v1768816774518!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-        </main>
-
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#36363e" fill-opacity="1" d="M0,96L40,117.3C80,139,160,181,240,186.7C320,192,400,160,480,149.3C560,139,640,149,720,176C800,203,880,245,960,250.7C1040,256,1120,224,1200,229.3C1280,235,1360,277,1400,298.7L1440,320L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg> -->
-
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <defs>
-                <linearGradient id="grad" gradientUnits="userSpaceOnUse"
-                x1="0" y1="0" x2="1440" y2="1440">
-                <stop offset="0%" stop-color="#141C2A" />
-                <stop offset="45%" stop-color="#1E2A3A" />
-                <stop offset="100%" stop-color="#223047" />
-                </linearGradient>
-            </defs>
-
-            <path fill="url(#grad)" fill-opacity="1"
-                d="M0,96L40,117.3C80,139,160,181,240,186.7C320,192,400,160,480,149.3C560,139,640,149,720,176C800,203,880,245,960,250.7C1040,256,1120,224,1200,229.3C1280,235,1360,277,1400,298.7L1440,320L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
-            </path>
-        </svg>
-
-        <footer class="site-footer section-padding">
-            <div class="container">
-               <div class="row">
-
-                    <div class="col-lg-3 col-md-5 col-12 mb-3">
-                        <h3><a href="{% url 'Home' %}" class="custom-link mb-1">Neminath Wood Industry (P) Ltd</a></h3>
-
-                        <p class="text-white">Since 2018, Crafting quality interior products that transform spaces with elegance and durability</p>
-                        
-                        <p class="text-white"><a href="{% url 'Home' %}" target="_parent">NEMINATH</a></p>
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-12 ms-lg-auto mb-3">
-                        <h3 class="text-white mb-3">Store</h3>
-
-                        <p class="text-white mt-2">
-                            <i class="bi-geo-alt"></i>
-                            Chennai, Tamil Nadu, India
-                        </p>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-12 mb-3">
-                        <h3 class="text-white mb-3">Contact Info</h3>
-
-                            <p class="text-white mb-1">
-                                <i class="bi-telephone me-1"></i>
-
-                                <a href="tel: 090-080-0760" class="text-white">
-                                    +91 81225 07384
-                                </a>
-                            </p>
-
-                            <p class="text-white mb-0">
-                                <i class="bi-envelope me-1"></i>
-
-                                <a href="mailto:info@company.com" class="text-white">
-                                    neminathwoodindustry.pvt.ltd@gmail.com
-                                </a>
-                            </p>
-                    </div>
-
-                    <div class="col-lg-6 col-md-7 copyright-text-wrap col-12 d-flex flex-wrap align-items-center mt-4 ms-auto">
-                        <p class="copyright-text mb-0 me-4">Copyright © Neminath Wood Industry (P) Ltd 2027</p>
-
-                        <ul class="social-icon">
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link social-icon-twitter bi-twitter"></a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link social-icon-facebook bi-facebook"></a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link social-icon-instagram bi-instagram"></a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link social-icon-pinterest bi-pinterest"></a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link social-icon-whatsapp bi-whatsapp"></a>
-                            </li>
-                        </ul>
-                    </div>
-               </div>
-            </div>
-        </footer>
-        
-
-        <script>
-            const STATIC_URL = "{% static '' %}";
-        </script>
-        <script src="{% static 'js/jquery.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'js/click-scroll.js' %}"></script>
-        <script src="{% static 'js/jquery.backstretch.min.js' %}"></script>
-        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-        <script src="{% static 'js/custom.js' %}"></script>
-
-    </body>
-</html>
+{% block title %}Neminath Wood Industry (P) Ltd | Best Product Manufacturer{% endblock %}
+{% block theme %}theme-home{% endblock %}
+
+{% block content %}
+<section class="nw-hero">
+  <div class="nw-wrap nw-hero-grid">
+    <div>
+      <div class="nw-eyebrow" style="color:#fff">Welcome to Neminath wood (P) Ltd</div>
+      <h1>Design Your Dream Home with Neminath Wood Industry</h1>
+      <p>Crafting Elegant Interiors with Quality Doors and Furniture. Experience designs that combine style, comfort, and lasting craftsmanship.</p>
+      <a href="#products" class="nw-btn nw-btn-light">Explore our products</a>
+    </div>
+    <div class="nw-hero-card"></div>
+  </div>
+</section>
+
+<section class="nw-section" id="about">
+  <div class="nw-wrap nw-story">
+    <div>
+      <div class="nw-eyebrow">Our Story</div>
+      <h2 class="nw-h2">Introducing Neminath</h2>
+      <h4>Since 2018, Neminath Wood Industry has been crafting high-quality doors, furniture, and interiors to elevate every space.</h4>
+      <p>Neminath Wood Industry transforms spaces with beautifully crafted doors, furniture, and interior solutions.</p>
+      <div class="nw-hours">
+        <h5>Opening Hours</h5>
+        Mon - Friday ~ <strong>9:00 AM - 6:00 PM</strong><br>
+        Saturday ~ 2nd and 4th <strong>9:00 AM - 6:00 PM</strong><br>
+        Sunday ~ Closed
+      </div>
+    </div>
+    <div class="nw-imgs">
+      <img src="{% static 'images/background2.jpg' %}" alt="">
+      <img src="{% static 'images/featured-compressed-46.jpg' %}" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="nw-section" id="products" style="padding-top:0">
+  <div class="nw-wrap">
+    <div class="nw-eyebrow">Neminath Design Shop</div>
+    <h2 class="nw-h2">Neminath Wood Industry - Interior Products</h2>
+    <div class="nw-grid">
+      <a href="{% url 'products' %}" class="nw-tile nw-big"><img src="{% static 'images/shop/Interiordesign.jpg' %}" alt=""><span>Luxury wooden interior furniture</span></a>
+      <a href="{% url 'products' %}" class="nw-tile"><img src="{% static 'images/shop/mock-up-poster-modern-dining-room-interior-design-with-white-empty-wall.jpg' %}" alt=""><span>Modern dining room with wooden furniture</span></a>
+      <a href="{% url 'products' %}" class="nw-tile"><img src="{% static 'images/shop/green-sofa-white-living-room-with-blank-table-mockup.jpg' %}" alt=""><span>Living Room</span></a>
+      <a href="{% url 'products' %}" class="nw-tile"><img src="{% static 'images/shop/concept-home-cooking-with-female-chef.jpg' %}" alt=""><span>Chef Kitchen</span></a>
+      <a href="{% url 'Furnitureforkids' %}" class="nw-tile"><img src="{% static 'images/shop/childrens-bed-nursery-cot-velvet-childrens-room.jpg' %}" alt=""><span>Childrens Bedroom</span></a>
+      <a href="{% url 'products' %}" class="nw-tile"><img src="{% static 'images/shop/Victorian-Dining-Table.jpg' %}" alt=""><span>Wooden dining chairs and table set</span></a>
+      <a href="{% url 'Wardrobe' %}" class="nw-tile"><img src="{% static 'images/shop/Wooden-Wardrobe-Designs.jpg' %}" alt=""><span>Wardrobe</span></a>
+      <a href="{% url 'products' %}" class="nw-tile nw-wide"><img src="{% static 'images/shop/bedroomdesign.jpg' %}" alt=""><span>Elegant bedroom furniture</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="nw-section nw-clients" id="clients">
+  <div class="nw-wrap">
+    <h2 class="nw-h2">Our Clients</h2>
+    <div class="nw-logos">
+      <div><img src="{% static 'images/clientlogos/akshayalogo.jpg' %}" alt="Akshaya"></div>
+      <div><img src="{% static 'images/clientlogos/bharatiyafashion.webp' %}" alt="Bharatiya Fashion"></div>
+      <div><img src="{% static 'images/clientlogos/bscpl.webp' %}" alt="BSCPL"></div>
+      <div><img src="{% static 'images/clientlogos/Casagrandlogo.webp' %}" alt="Casagrand"></div>
+      <div><img src="{% static 'images/clientlogos/eticadevelopers.jpg' %}" alt="Etica Developers"></div>
+      <div><img src="{% static 'images/clientlogos/j-stilologo.jpg' %}" alt="J Stilo"></div>
+      <div><img src="{% static 'images/clientlogos/navins.png' %}" alt="Navins"></div>
+      <div><img src="{% static 'images/clientlogos/nxghomes.jpg' %}" alt="NXG Homes"></div>
+      <div><img src="{% static 'images/clientlogos/RWD-logo.png' %}" alt="RWD"></div>
+      <div><img src="{% static 'images/clientlogos/lifestyle-new.png' %}" alt="Lifestyle"></div>
+      <div><img src="{% static 'images/clientlogos/babyshop-new.png' %}" alt="Babyshop"></div>
+      <div><img src="{% static 'images/clientlogos/htl-logo.png' %}" alt="HTL"></div>
+      <div><img src="{% static 'images/clientlogos/s&s.png' %}" alt="S&S"></div>
+      <div><img src="{% static 'images/clientlogos/shriramproperities.jpg' %}" alt="Shriram"></div>
+      <div><img src="{% static 'images/clientlogos/syconconstruction.png' %}" alt="Sycon"></div>
+      <div><img src="{% static 'images/clientlogos/tvh.png' %}" alt="TVH"></div>
+      <div><img src="{% static 'images/clientlogos/Innovative.png' %}" alt="Innovative"></div>
+      <div><img src="{% static 'images/clientlogos/homecentre-new.png' %}" alt="Home Centre"></div>
+      <div><img src="{% static 'images/clientlogos/centrepoint-new.png' %}" alt="Centrepoint"></div>
+      <div><img src="{% static 'images/clientlogos/NewCentury.png' %}" alt="New Century"></div>
+      <div><img src="{% static 'images/clientlogos/vodafone.jpg' %}" alt="Vodafone"></div>
+      <div><img src="{% static 'images/clientlogos/bbcl.webp' %}" alt="bbcl"></div>
+    </div>
+  </div>
+</section>
+
+<section class="nw-section" id="contact">
+  <div class="nw-wrap nw-contact">
+    <div>
+      <div class="nw-eyebrow">Ask anything.</div>
+      <h2 class="nw-h2">Say Hello</h2>
+      <form action="{% url 'contact' %}" method="post">
+        {% csrf_token %}
+        <div class="nw-row">
+          <div><label for="first-name">First Name</label><input type="text" name="first-name" id="first-name" placeholder="Jack" required></div>
+          <div><label for="last-name">Last Name</label><input type="text" name="last-name" id="last-name" placeholder="Doe" required></div>
+        </div>
+        <label for="contact">Contact Number</label>
+        <input type="text" name="contact" id="contact" placeholder="+91 9087...." required>
+        <label for="email">Email Address</label>
+        <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Jackdoe@gmail.com" required>
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="5" placeholder="What can we help you?"></textarea>
+        <button type="submit" class="nw-btn">Send</button>
+      </form>
+    </div>
+    <div>
+      <div class="nw-card">
+        <h3>Facility</h3>
+        <p style="margin:0">Chennai, Tamil Nadu, India</p>
+      </div>
+      <div class="nw-card">
+        <h3>Contact Info</h3>
+        <p style="margin:0"><a href="tel: 090-080-0760">+91 81225 07384</a><br><a href="mailto:info@company.com">neminathwoodindustry.pvt.ltd@gmail.com</a></p>
+      </div>
+      <iframe class="nw-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3701.26577691135!2d80.13302157485984!3d13.269481387073986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a527f00411a1acf%3A0x607eee171c38f4b8!2sNeminath%20Wood%20Industry%20%E2%80%93%20Main%20Factory!5e1!3m2!1sen!2sin!4v1768816774518!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+{% endblock %}

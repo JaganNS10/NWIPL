@@ -1,0 +1,97 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Neminath Wood Industry (P) Ltd{% endblock %}</title>
+<link rel="icon" href="{% static 'images/NWIPLLOGO.png' %}" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+<link href="{% static 'css/theme.css' %}" rel="stylesheet">
+{% block head %}{% endblock %}
+</head>
+<body class="{% block theme %}theme-home{% endblock %}">
+
+<nav class="navbar navbar-expand-lg nw-nav" id="nwNav">
+  <div class="nw-wrap d-flex align-items-center w-100">
+    <a class="navbar-brand" href="{% url 'Home' %}"><img src="{% static 'images/nwi-logo-flat.png' %}" alt="NWI" class="nw-logo"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nwMenu" aria-controls="nwMenu" aria-expanded="false" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nwMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="{% url 'Home' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'Home' %}#about">About</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Our Products</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'products' %}">Neminath Product Collections</a></li>
+            <li><a class="dropdown-item" href="{% url 'BabyCot' %}">Baby Cot Collection</a></li>
+            <li><a class="dropdown-item" href="{% url 'ClassicRanges' %}">Classic Ranges</a></li>
+            <li><a class="dropdown-item" href="{% url 'SkinRanges' %}">Skin Ranges</a></li>
+            <li><a class="dropdown-item" href="{% url 'VeneerRanges' %}">Veneer Ranges</a></li>
+            <li><a class="dropdown-item" href="{% url 'LaminateRanges' %}">Laminate Ranges</a></li>
+            <li><a class="dropdown-item" href="{% url 'LightOpeningRanges' %}">Light Opening Ranges</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'Home' %}#clients">Our Client</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'Home' %}#contact">Contact</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Residence</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'Furnitureforkids' %}">Furniture for Kids</a></li>
+            <li><a class="dropdown-item" href="{% url 'Tvunit' %}">TV Unit</a></li>
+            <li><a class="dropdown-item" href="{% url 'Wardrobe' %}">Wardrobe</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Our facility</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'seasoningchamber' %}">Seasoning Chamber</a></li>
+            <li><a class="dropdown-item" href="{% url 'Corporate' %}">Corporate</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'careers' %}">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% if messages %}
+<div class="nw-wrap nw-messages">
+  {% for message in messages %}<div class="nw-msg">{{ message }}</div>{% endfor %}
+</div>
+{% endif %}
+
+<main>{% block content %}{% endblock %}</main>
+
+<footer class="nw-footer">
+  <div class="nw-wrap nw-footer-grid">
+    <div>
+      <h3><a href="{% url 'Home' %}">Neminath Wood Industry (P) Ltd</a></h3>
+      <p>Since 2018, Crafting quality interior products that transform spaces with elegance and durability</p>
+      <p><a href="#">NEMINATH</a></p>
+    </div>
+    <div>
+      <h4>Store</h4>
+      <p><i class="bi-geo-alt"></i> Chennai, Tamil Nadu, India</p>
+    </div>
+    <div>
+      <h4>Contact Info</h4>
+      <p><i class="bi-telephone"></i> <a href="tel: 090-080-0760">+91 81225 07384</a></p>
+      <p><i class="bi-envelope"></i> <a href="mailto:info@company.com">neminathwoodindustry.pvt.ltd@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="nw-wrap nw-footer-bar">
+    <span>Copyright © Neminath Wood Industry (P) Ltd 2027</span>
+    <span class="nw-social"><a href="#" class="bi-twitter"></a><a href="#" class="bi-facebook"></a><a href="#" class="bi-instagram"></a><a href="#" class="bi-pinterest"></a><a href="#" class="bi-whatsapp"></a></span>
+  </div>
+</footer>
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/theme.js' %}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
