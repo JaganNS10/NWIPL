@@ -19,7 +19,14 @@ h1,h2,h3,h4{font-weight:700;line-height:1.1;margin:0}
 
 .nw-nav{position:sticky;top:0;z-index:50;background:var(--cream);border-bottom:1px solid var(--line);padding:10px 0}
 .nw-nav-solid{box-shadow:0 4px 18px rgba(43,26,18,.12)}
-.nw-logo{height:46px;width:auto}
+/* .nw-logo{height:46px;width:auto} */
+.nw-logo {
+    height: 70px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    display: block;
+}
 .nw-nav .nav-link{color:var(--ink);font-weight:600;padding:8px 14px}
 .nw-nav .nav-link:hover{color:var(--gold)}
 .nw-nav .dropdown-menu{background:var(--cream);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 28px rgba(43,26,18,.15)}
