@@ -1,32 +1,38 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %}{% load static %}
 {% block title %}Baby Cot Collection | Neminath Wood Industry (P) Ltd{% endblock %}
-{% block theme %}theme-baby{% endblock %}
-
+{% block meta %}The NWI-BC series: precision-engineered baby cots with child-safe, non-toxic finishes by Neminath Wood Industry.{% endblock %}
+{% block body_class %}pg-cot{% endblock %}
 {% block content %}
-<section class="nw-pagehero">
-  <div class="nw-wrap"><h1>Baby Cot Collection</h1></div>
+<section class="bc-hero">
+  <div class="wrap"><p class="eyebrow">{{ intro.eyebrow }}</p><h1 class="h1">Baby Cot Collection</h1></div>
 </section>
 
-<section class="nw-section">
-  <div class="nw-wrap">
-    <div class="nw-prod" style="padding-top:0">
-      <img class="nw-prod-img" src="{% static 'images/BabyCot/nwibc1a.jpeg' %}" alt="NWI-BC-1A Baby Cot">
-      <div>
-        <div class="nw-eyebrow">The NWI-BC series</div>
-        <h2>Introduction to the NWI Baby Cot Collection</h2>
-        <p>Our newest line under the NWI brand: precision-engineered baby cots built with child-safe, non-toxic finishes — designed in-house and manufactured to go beyond borders.</p>
-        <p>A precision-engineered baby cot built on a dowel &amp; barrel-nut joinery system for structural strength, offered across fixed and mobile variants — starting with our foundational model, <strong>NWI-BC-1A</strong>.</p>
-      </div>
-    </div>
-
-    {% include 'partials/model_row.html' with code='NWI-BC-1A-01' img='images/BabyCot/nwibc1a01.jpeg' text='The same precision-engineered frame as NWI-BC-1A, fitted with locking wheel castors for easy repositioning — ideal for nurseries and hospitals that need mobility without compromising structural strength.' material='Engineered MDF core with solid wood framing' finish='Non-toxic, child-safe paint' variant='With locking wheel castors' flip=True %}
-
-    {% include 'partials/model_row.html' with code='NWI-BC-1A-02' img='images/BabyCot/nwibc1a02.jpeg' text='Our arched-headboard design — a classic silhouette with a curved top rail, finished in the same child-safe, non-toxic paint standard as every NWI-BC model. Fixed-leg variant.' material='Engineered MDF core with solid wood framing' finish='Non-toxic, child-safe paint' variant='Fixed legs' %}
-
-    {% include 'partials/model_row.html' with code='NWI-BC-1A-03' img='images/BabyCot/nwibc1a03.jpeg' text='The arched-headboard design fitted with locking wheel castors — combining classic styling with the mobility needed for busy nurseries.' material='Engineered MDF core with solid wood framing' finish='Non-toxic, child-safe paint' variant='With locking wheel castors' flip=True %}
-
-    {% include 'partials/model_row.html' with code='NWI-BC-1A-04' img='images/BabyCot/nwibc1a04.jpeg' text='Our modern design — solid rubber wood grain end panels paired with grey-painted slat side rails, fitted with locking wheel castors. A contemporary alternative to our classic slatted range.' material='MDF + Rubber Wood' finish='Grey paint' variant='With locking wheel castors' %}
+<section class="wrap bc-intro rv">
+  <img src="{% static intro.image %}" alt="NWI-BC-1A Baby Cot">
+  <div>
+    <h2 class="h2">{{ intro.title }}</h2>
+    {% for p in intro.paras %}<p>{{ p }}</p>{% endfor %}
   </div>
 </section>
+
+<section class="wrap bc-models">
+  {% for m in models %}
+  <article class="bc-model {% if forloop.counter|divisibleby:2 %}rev{% endif %} rv">
+    <img src="{% static m.image %}" alt="{{ m.code }} Baby Cot" loading="lazy">
+    <div>
+      <span class="code">{{ m.code }}</span>
+      <h2>{{ m.code }}</h2>
+      <p>{{ m.description }}</p>
+      <ul class="specs">
+        <li><b>Material</b><span>{{ m.material }}</span></li>
+        <li><b>Finish</b><span>{{ m.finish }}</span></li>
+        <li><b>Joinery</b><span>{{ m.joinery }}</span></li>
+        <li><b>Variant</b><span>{{ m.variant }}</span></li>
+      </ul>
+      <a class="link-blue" href="{% url 'contact' %}?ref={{ m.code|urlencode }}">Enquire about this model &rarr;</a>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+{% include 'partials/cta.html' with ref='Baby Cot Collection' text='Need a custom baby cot?' %}
 {% endblock %}

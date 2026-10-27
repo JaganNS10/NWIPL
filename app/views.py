@@ -1,200 +1,190 @@
-from django.shortcuts import render
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Job, JobApplication
-from .forms import JobApplicationForm
+import logging
+
 from django.contrib import messages
-from django.contrib.sitemaps import Sitemap
-from django.urls import reverse
+from django.core.cache import cache
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils.http import url_has_allowed_host_and_scheme
+
+from . import catalog
+from .forms import EnquiryForm, JobApplicationForm
+from .mailer import send_brevo_email
+from .models import BabyCotModel, Enquiry, Job
+
+log = logging.getLogger(__name__)
 
 
-from django.conf import settings
-import os
-
-
-import threading
-from django.core.mail import send_mail, EmailMessage
+def _enquiry_form(request):
+    """Blank enquiry form, pre-filled when a page links here with ?ref=<product>."""
+    ref = request.GET.get("ref", "").strip()[:100]
+    initial = {"source": ref}
+    if ref:
+        initial["message"] = f"I would like to enquire about: {ref}"
+    return EnquiryForm(initial=initial)
 
 
 def Home(request):
-    return render(request,'index.html')
+    return render(request, "index.html", {
+        "hero_slides": catalog.HERO_SLIDES,
+        "tiles": catalog.SHOP_TILES,
+        "collections": catalog.COLLECTIONS,
+        "clients": catalog.CLIENTS,
+        "form": _enquiry_form(request),
+    })
 
 
-# def Modularkitchen(request):
-#     return render(request,'ModularKitchen.html')
+def products(request):
+    return render(request, "products.html", {
+        "features": catalog.PRODUCT_FEATURES,
+        "gallery": catalog.PRODUCT_GALLERY,
+        "collections": catalog.COLLECTIONS,
+    })
 
-def Furnitureforkids(request):
-    return render(request,'FurnitureforKids.html')
 
-def Tvunit(request):
-    return render(request,'TVUnit.html')
+def BabyCot(request):
+    return render(request, "BabyCot.html", {
+        "intro": catalog.BABYCOT_INTRO,
+        "models": BabyCotModel.objects.filter(is_active=True),
+    })
 
-def Wardrobe(request):
-    return render(request,'Wardrobe.html')
 
 def ClassicRanges(request):
-    return render(request,'ClassicRanges.html')
+    return render(request, "ClassicRanges.html", {"r": catalog.RANGES["classic"]})
+
 
 def SkinRanges(request):
-    return render(request,'SkinRanges.html')
+    return render(request, "SkinRanges.html", {"r": catalog.RANGES["skin"]})
+
 
 def VeneerRanges(request):
-    return render(request,'VeneerRanges.html')
+    return render(request, "VeneerRanges.html", {"r": catalog.RANGES["veneer"]})
+
 
 def LaminateRanges(request):
-    return render(request,'LaminateRanges.html')
+    return render(request, "LaminateRanges.html", {"r": catalog.RANGES["laminate"]})
+
 
 def LightOpeningRanges(request):
-    return render(request,'LightOpeningRanges.html')
+    return render(request, "LightOpeningRanges.html", {"r": catalog.RANGES["light"]})
+
+
+def Wardrobe(request):
+    return render(request, "Wardrobe.html", {"s": catalog.SPACES["wardrobe"]})
+
+
+def Tvunit(request):
+    return render(request, "TVUnit.html", {"s": catalog.SPACES["tv"]})
+
+
+def Furnitureforkids(request):
+    return render(request, "FurnitureforKids.html", {"s": catalog.SPACES["kids"]})
+
 
 def Corporate(request):
-    return render(request,'Corporate.html')
+    return render(request, "Corporate.html", {"s": catalog.SPACES["corporate"], "clients": catalog.CLIENTS})
+
 
 def seasoningchamber(request):
-    return render(request,'seasoningchamber.html')
+    return render(request, "seasoningchamber.html", {"d": catalog.SEASONING})
 
-# def careers(request):
-#     jobs = Job.objects.filter(is_active=True)
-#     return render(request, 'job_list.html', {'jobs': jobs})
 
+# ---------- Careers ----------
 
 def careers(request):
     jobs = Job.objects.filter(is_active=True)
-    return render(request,'careers.html',{'jobs': jobs})
+    return render(request, "careers.html", {"jobs": jobs})
 
 
 def job_detail(request, id):
     job = get_object_or_404(Job, id=id, is_active=True)
-    return render(request, 'job_detail.html', {'job': job})
-
-
-def products(request):
-    return render(request,'products.html')
-
-
-
-
-
-
-import os
-import requests
-from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib import messages
-from .forms import JobApplicationForm
-from .models import Job
-
-BREVO_API_KEY = os.environ.get("BREVO_API_KEY")  # store this in Render Env Vars
-
-def send_brevo_email(sender_email, sender_name, to_email, subject, text_content, attachment=None, attachment_name=None, attachment_type=None):
-    url = "https://api.brevo.com/v3/smtp/email"
-    headers = {
-        "api-key": BREVO_API_KEY,
-        "Content-Type": "application/json",
-    }
-    data = {
-        "sender": {"email": sender_email, "name": sender_name},
-        "to": [{"email": to_email}],
-        "subject": subject,
-        "textContent": text_content,
-    }
-    if attachment:
-        import base64
-        encoded_file = base64.b64encode(attachment.read()).decode()
-        data["attachment"] = [{
-            "content": encoded_file,
-            "name": attachment_name,
-            "type": attachment_type
-        }]
-    response = requests.post(url, json=data, headers=headers)
-    print("Brevo API response:", response.status_code, response.text)
-    return response.status_code, response.text
+    return render(request, "job_detail.html", {"job": job})
 
 
 def job_apply(request, id):
-    job = get_object_or_404(Job, id=id)
-    if request.method == 'POST':
+    job = get_object_or_404(Job, id=id, is_active=True)
+    if request.method == "POST":
         form = JobApplicationForm(request.POST, request.FILES)
         if form.is_valid():
-            full_name = f"{form.cleaned_data['first_name']} {form.cleaned_data['last_name']}"
-            job_title = job.title
             application = form.save(commit=False)
             application.job = job
             application.save()
 
-            # User confirmation email
-            subject_user = "Application Received – Neminath Wood Industry Pvt Ltd"
-            message_user = (
-                f"Hi {full_name},\n\n"
-                f"Thank you for your interest in Neminath Wood Industry Private Limited.\n"
-                f"We have successfully received your application for the position of {job_title}.\n\n"
-                f"Our team will contact you if your profile matches the required position.\n\n"
-                f"Best regards,\nTalent Acquisition Team\nNeminath Wood Industry Pvt Ltd"
-            )
+            name = f"{form.cleaned_data['first_name']} {form.cleaned_data['last_name']}"
             send_brevo_email(
-                sender_email="hr@nwipl.com",
-                sender_name="Neminath Wood Industry Pvt Ltd",
-                to_email=form.cleaned_data['email'],
-                subject=subject_user,
-                text_content=message_user
+                form.cleaned_data["email"],
+                "Application Received – Neminath Wood Industry Pvt Ltd",
+                f"Hi {name},\n\nThank you for your interest in Neminath Wood Industry Private Limited.\n"
+                f"We have successfully received your application for the position of {job.title}.\n\n"
+                "Our team will contact you if your profile matches the required position.\n\n"
+                "Best regards,\nTalent Acquisition Team\nNeminath Wood Industry Pvt Ltd",
             )
-
-            # HR notification email with resume
-            resume = request.FILES['resume']
-            subject_hr = f"Job Application from {full_name}"
-            message_hr = (
-                f"{full_name} has applied for {job_title}.\n"
-                f"Email: {form.cleaned_data['email']}\n"
-                f"Contact: {form.cleaned_data['contact']}\n"
-            )
+            resume = request.FILES["resume"]
+            resume.seek(0)  # the file was read while saving; rewind so the attachment is not empty
             send_brevo_email(
-                sender_email="hr@nwipl.com",
-                sender_name="Neminath Wood Industry Pvt Ltd",
-                to_email="hr@nwipl.com",
-                subject=subject_hr,
-                text_content=message_hr,
-                attachment=resume,
+                "hr@nwipl.com",
+                f"Job Application from {name}",
+                f"{name} has applied for {job.title}.\n"
+                f"Email: {form.cleaned_data['email']}\nContact: {form.cleaned_data['contact']}\n",
+                attachment=resume.read(),
                 attachment_name=resume.name,
-                attachment_type=resume.content_type
+                reply_to=form.cleaned_data["email"],
             )
-
             messages.success(
                 request,
-                f'Your application for {job_title} has been submitted successfully. Check your email for confirmation.'
+                f"Your application for {job.title} has been submitted successfully. Check your email for confirmation.",
             )
-            return redirect('careers')
-        else:
-            messages.error(request, 'There was an error with your submission.')
+            return redirect("careers")
+        messages.error(request, "Please correct the highlighted fields and try again.")
     else:
         form = JobApplicationForm()
+    return render(request, "job_apply.html", {"job": job, "form": form})
 
-    return render(request, 'job_apply.html', {'job': job, 'form': form})
+
+# ---------- Enquiries ----------
+
+def _client_ip(request):
+    forwarded = request.META.get("HTTP_X_FORWARDED_FOR", "")
+    return (forwarded.split(",")[0].strip() if forwarded else request.META.get("REMOTE_ADDR", "")) or "unknown"
+
+
+def _notify(enquiry):
+    body = (
+        f"New enquiry from the website\n\n"
+        f"Name: {enquiry.name}\nPhone: {enquiry.phone}\nEmail: {enquiry.email or '-'}\n"
+        f"Type: {enquiry.get_enquiry_type_display()}\nAbout: {enquiry.source or '-'}\n\n"
+        f"Message:\n{enquiry.message or '-'}\n"
+    )
+    from django.conf import settings
+    ok = send_brevo_email(
+        settings.ENQUIRY_TO_EMAIL,
+        f"New website enquiry from {enquiry.name}",
+        body,
+        reply_to=enquiry.email or None,
+    )
+    if ok:
+        Enquiry.objects.filter(pk=enquiry.pk).update(email_sent=True)
 
 
 def contact(request):
-    if request.method == 'POST':
-        first_name = request.POST.get('first-name')
-        last_name = request.POST.get('last-name')
-        name = f"{first_name} {last_name}"
-        email = request.POST.get('email')
-        contact_ = request.POST.get('contact')
-        message_text = request.POST.get('message')
+    if request.method != "POST":
+        return render(request, "contact.html", {"form": _enquiry_form(request)})
 
-        subject = "New Enquiry from Website Contact Page"
-        body = f"Name: {name}\nEmail: {email}\nContact:{contact_}\nMessage: {message_text}"
+    form = EnquiryForm(request.POST)
+    key = f"enquiry:{_client_ip(request)}"
+    if cache.get(key, 0) >= 5:
+        messages.error(request, "Too many enquiries from this connection. Please try again in an hour.")
+        return render(request, "contact.html", {"form": form}, status=429)
 
-        # send_brevo_email(
-        #     sender_email="hr@nwipl.com",
-        #     sender_name="Neminath Wood Industry Pvt Ltd",
-        #     to_email="hr@nwipl.com",
-        #     subject=subject,
-        #     text_content=body
-        # )
-
-        messages.success(request, f"Thank you {name} for contacting Neminath Wood Industry Pvt Ltd. We will contact you shortly!")
-        return redirect('Home')
-
-    return redirect('Home')
-
-def BabyCot(request):
-    return render(request,'BabyCot.html')
+    if form.is_valid():
+        enquiry = form.save()
+        cache.set(key, cache.get(key, 0) + 1, 3600)
+        _notify(enquiry)
+        return redirect("contact_thanks")
+    return render(request, "contact.html", {"form": form}, status=400)
 
 
+def contact_thanks(request):
+    return render(request, "thanks.html")
+
+
+def not_found(request, exception=None):
+    return render(request, "404.html", status=404)

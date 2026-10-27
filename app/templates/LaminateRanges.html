@@ -1,25 +1,18 @@
-{% extends 'range_base.html' %}
-{% load static %}
+{% extends 'base.html' %}{% load static %}
 {% block title %}Laminate Range Furniture | Neminath Wood Industry (P) Ltd{% endblock %}
-{% block theme %}theme-doors{% endblock %}
-{% block h1 %}Laminate Ranges{% endblock %}
-{% block intro_title %}Explore Laminate Ranges{% endblock %}
-{% block intro_text %}
-<p>Neminath Wood offers a versatile selection of laminate ranges designed to bring style, durability, and easy maintenance to every interior space. Our finishes are created to suit both modern and classic interiors.</p>
-<p>From functional cabinets to elegant furniture surfaces, Neminath’s laminate ranges combine strength, quality, and visual appeal, making interiors both practical and visually refined.</p>
-{% endblock %}
-{% block intro_img %}{% static 'images/laminaterange/laminaterangeone.png' %}{% endblock %}
-{% block about_title %}Laminate Ranges{% endblock %}
-{% block about_text %}
-<p>Neminath Wood presents a range of laminate designs crafted to offer durability and modern appeal for your interiors. Each surface is thoughtfully created for everyday use.</p>
-<p>Our laminate ranges combine quality materials and refined finishes, ensuring every furniture piece adds style, strength, and comfort to your space.</p>
-{% endblock %}
-{% block about_img %}{% static 'images/laminaterange/laminaterangetwo.jpg' %}{% endblock %}
-{% block gallery %}
-<figure class="nw-fig"><img src="{% static 'images/laminaterange/laminaterangethree.webp' %}" alt="Laminate Range Floor" loading="lazy"><figcaption>Laminate Range Floor</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/laminaterange/laminaterangefour.jpg' %}" alt="Elegant Laminate Doors" loading="lazy"><figcaption>Elegant Laminate Doors</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/laminaterange/laminaterangefive.jpg' %}" alt="Timeless Door Designs" loading="lazy"><figcaption>Timeless Door Designs</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/laminaterange/laminaterangesix.jpg' %}" alt="Premium Interior Doors" loading="lazy"><figcaption>Premium Interior Doors</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/laminaterange/laminaterangeseven.webp' %}" alt="Laminated Wood Furniture" loading="lazy"><figcaption>Laminated Wood Furniture</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/laminaterange/laminaterangeeight.jpg' %}" alt="Refined Laminate Kitchens" loading="lazy"><figcaption>Refined Laminate Kitchens</figcaption></figure>
+{% block meta %}{{ r.meta }}{% endblock %}
+{% block body_class %}pg-laminate{% endblock %}
+{% block content %}
+<section class="lm-top wrap">
+  <p class="eyebrow">Durable &middot; Easy to maintain</p>
+  <h1 class="h1">{{ r.title }}</h1>
+  <div class="lm-text"><div><h2>{{ r.intro_title }}</h2>{% for p in r.intro %}<p>{{ p }}</p>{% endfor %}</div><div><h2>{{ r.about_title }}</h2>{% for p in r.about %}<p>{{ p }}</p>{% endfor %}</div></div>
+  <div class="lm-pair"><img class="rv" src="{% static r.intro_img %}" alt="{{ r.intro_title }}" data-zoom><img class="rv" src="{% static r.about_img %}" alt="{{ r.about_title }}" data-zoom></div>
+</section>
+<section class="wrap lm-grid">
+  {% for src, cap in r.gallery %}
+  <figure class="rv"><img src="{% static src %}" alt="{{ cap }}" loading="lazy" data-zoom><figcaption><i style="--n:{{ forloop.counter }}"></i>{{ cap }}</figcaption></figure>
+  {% endfor %}
+</section>
+{% include 'partials/cta.html' with ref=r.title %}
 {% endblock %}

@@ -1,0 +1,4 @@
+{% load static %}
+<div class="logos">
+  {% for name, file in clients %}<div class="logo-card"><img src="{% static 'images/clientlogos/'|add:file %}" alt="{{ name }}" loading="lazy"></div>{% endfor %}
+</div>

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Page not found | Neminath Wood Industry (P) Ltd{% endblock %}
+{% block body_class %}pg-simple{% endblock %}
+{% block content %}
+<section class="simple wrap">
+  <p class="eyebrow">404</p>
+  <h1 class="h1">This page could not be found</h1>
+  <p class="lead">The page may have moved. Use the menu above, or go back to the home page.</p>
+  <a class="btn btn-gold" href="{% url 'Home' %}">Back to home</a>
+</section>
+{% endblock %}

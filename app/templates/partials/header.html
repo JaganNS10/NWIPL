@@ -1,0 +1,44 @@
+{% load static %}{% with n=request.resolver_match.url_name %}
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="{% url 'Home' %}" aria-label="Neminath Wood Industry home"><img src="{% static 'images/logo-mark.jpg' %}" alt="NWI" width="96" height="47"></a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="menu" class="menu" aria-label="Main">
+      <ul>
+        <li><a href="{% url 'Home' %}" {% if n == 'Home' %}aria-current="page"{% endif %}>Home</a></li>
+        <li><a href="{% url 'Home' %}#about">About</a></li>
+        <li class="has-sub">
+          <button type="button" class="sub-btn {% if n == 'products' or n == 'BabyCot' or n == 'ClassicRanges' or n == 'SkinRanges' or n == 'VeneerRanges' or n == 'LaminateRanges' or n == 'LightOpeningRanges' %}active{% endif %}" aria-expanded="false">Our Products <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <ul class="sub">
+            <li><a href="{% url 'products' %}">Neminath Product Collections</a></li>
+            <li><a href="{% url 'BabyCot' %}">Baby Cot Collection</a></li>
+            <li><a href="{% url 'ClassicRanges' %}">Classic Ranges</a></li>
+            <li><a href="{% url 'SkinRanges' %}">Skin Ranges</a></li>
+            <li><a href="{% url 'VeneerRanges' %}">Veneer Ranges</a></li>
+            <li><a href="{% url 'LaminateRanges' %}">Laminate Ranges</a></li>
+            <li><a href="{% url 'LightOpeningRanges' %}">Light Opening Ranges</a></li>
+          </ul>
+        </li>
+        <li><a href="{% url 'Home' %}#clients">Our Client</a></li>
+        <li><a href="{% url 'Home' %}#contact">Contact</a></li>
+        <li class="has-sub">
+          <button type="button" class="sub-btn {% if n == 'Furnitureforkids' or n == 'Tvunit' or n == 'Wardrobe' %}active{% endif %}" aria-expanded="false">Residence <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <ul class="sub">
+            <li><a href="{% url 'Furnitureforkids' %}">Furniture for Kids</a></li>
+            <li><a href="{% url 'Tvunit' %}">TV Unit</a></li>
+            <li><a href="{% url 'Wardrobe' %}">Wardrobe</a></li>
+          </ul>
+        </li>
+        <li class="has-sub">
+          <button type="button" class="sub-btn {% if n == 'seasoningchamber' or n == 'Corporate' %}active{% endif %}" aria-expanded="false">Our facility <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <ul class="sub">
+            <li><a href="{% url 'seasoningchamber' %}">Seasoning Chamber</a></li>
+            <li><a href="{% url 'Corporate' %}">Corporate</a></li>
+          </ul>
+        </li>
+        <li><a href="{% url 'careers' %}" {% if n == 'careers' or n == 'job_detail' or n == 'job_apply' %}aria-current="page"{% endif %}>Careers</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+{% endwith %}

@@ -1,24 +1,21 @@
-{% extends 'range_base.html' %}
-{% load static %}
+{% extends 'base.html' %}{% load static %}
 {% block title %}Classic Range Furniture | Neminath Wood Industry (P) Ltd{% endblock %}
-{% block theme %}theme-doors{% endblock %}
-{% block h1 %}Classic Ranges{% endblock %}
-{% block intro_title %}Explore Classic Ranges{% endblock %}
-{% block intro_text %}
-<p>Neminath Wood offers a timeless selection of classic ranges that blend elegance and functionality for every interior space. Our designs are crafted to complement wooden finishes and modern décor effortlessly.</p>
-<p>From sophisticated cabinets to versatile furniture, Neminath's classic ranges provide quality, durability, and style, making every room both practical and aesthetically pleasing.</p>
-{% endblock %}
-{% block intro_img %}{% static 'images/classicranges/classicranges.jpg' %}{% endblock %}
-{% block about_title %}Classic Ranges{% endblock %}
-{% block about_text %}
-<p>Neminath Wood presents a range of classic designs crafted to bring elegance and functionality to your interiors. Each piece is thoughtfully designed for lasting appeal.</p>
-<p>Our classic ranges combine quality craftsmanship and timeless style, ensuring every furniture piece enhances the beauty and comfort of your space.</p>
-{% endblock %}
-{% block about_img %}{% static 'images/classicranges/classicrangess.jpg' %}{% endblock %}
-{% block gallery %}
-<figure class="nw-fig"><img src="{% static 'images/classicranges/classicrangeone.jpg' %}" alt="Classic Range Doors" loading="lazy"><figcaption>Classic Range Doors</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/classicranges/classicrangetwo.png' %}" alt="Elegant Wooden Doors" loading="lazy"><figcaption>Elegant Wooden Doors</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/classicranges/classicrangethree.jpg' %}" alt="Timeless Door Designs" loading="lazy"><figcaption>Timeless Door Designs</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/classicranges/classicrangefour.webp' %}" alt="Premium Interior Doors" loading="lazy"><figcaption>Premium Interior Doors</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/classicranges/classicrangefive.jpg' %}" alt="Sophisticated Door Styles" loading="lazy"><figcaption>Sophisticated Door Styles</figcaption></figure>
+{% block meta %}{{ r.meta }}{% endblock %}
+{% block body_class %}pg-classic{% endblock %}
+{% block content %}
+<section class="cl-hero">
+  <img src="{% static r.intro_img %}" alt="{{ r.title }}">
+  <div class="cl-hero-in wrap"><p class="eyebrow">Doors &amp; furniture</p><h1 class="h1">{{ r.title }}</h1></div>
+</section>
+<section class="wrap cl-intro rv"><div class="cl-card"><h2 class="h2">{{ r.intro_title }}</h2>{% for p in r.intro %}<p>{{ p }}</p>{% endfor %}</div></section>
+<section class="cl-about">
+  <div class="rv"><h2 class="h2">{{ r.about_title }}</h2>{% for p in r.about %}<p>{{ p }}</p>{% endfor %}</div>
+  <img class="rv" src="{% static r.about_img %}" alt="{{ r.about_title }}" loading="lazy">
+</section>
+<section class="cl-rows">
+  {% for src, cap in r.gallery %}
+  <figure class="cl-row rv"><img src="{% static src %}" alt="{{ cap }}" loading="lazy" data-zoom><figcaption><span>0{{ forloop.counter }}</span>{{ cap }}</figcaption></figure>
+  {% endfor %}
+</section>
+{% include 'partials/cta.html' with ref=r.title %}
 {% endblock %}

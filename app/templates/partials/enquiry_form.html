@@ -1,0 +1,14 @@
+<form class="enq" method="post" action="{% url 'contact' %}" novalidate>
+  {% csrf_token %}
+  {{ form.source }}
+  <div class="hp" aria-hidden="true"><label>Leave this empty {{ form.website }}</label></div>
+  {% if form.non_field_errors %}<p class="err">{{ form.non_field_errors }}</p>{% endif %}
+  <div class="field"><label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>{{ form.name }}{% for e in form.name.errors %}<span class="err">{{ e }}</span>{% endfor %}</div>
+  <div class="field-row">
+    <div class="field"><label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>{{ form.phone }}{% for e in form.phone.errors %}<span class="err">{{ e }}</span>{% endfor %}</div>
+    <div class="field"><label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>{{ form.email }}{% for e in form.email.errors %}<span class="err">{{ e }}</span>{% endfor %}</div>
+  </div>
+  <div class="field"><label for="{{ form.enquiry_type.id_for_label }}">{{ form.enquiry_type.label }}</label>{{ form.enquiry_type }}</div>
+  <div class="field"><label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>{{ form.message }}{% for e in form.message.errors %}<span class="err">{{ e }}</span>{% endfor %}</div>
+  <button class="btn btn-gold" type="submit">Send enquiry</button>
+</form>

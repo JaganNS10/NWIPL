@@ -1,25 +1,20 @@
-{% extends 'range_base.html' %}
-{% load static %}
+{% extends 'base.html' %}{% load static %}
 {% block title %}Veneer Range Furniture | Neminath Wood Industry (P) Ltd{% endblock %}
-{% block theme %}theme-doors{% endblock %}
-{% block h1 %}Veneer Ranges{% endblock %}
-{% block intro_title %}Explore Veneer Ranges{% endblock %}
-{% block intro_text %}
-<p>Neminath Wood presents premium veneer ranges designed to enhance interiors with natural textures and refined finishes. Each veneer surface is carefully selected to highlight the beauty of real wood.</p>
-<p>Blending durability with elegant design, Neminath’s veneer ranges offer versatile solutions that suit modern and classic interiors, adding warmth and sophistication to every space.</p>
-{% endblock %}
-{% block intro_img %}{% static 'images/veneerrange/veneerrangeone.jpg' %}{% endblock %}
-{% block about_title %}Veneer Ranges{% endblock %}
-{% block about_text %}
-<p>Neminath Wood presents a refined range of veneer designs crafted to add natural elegance and warmth to your interiors. Each finish is carefully created for a premium look.</p>
-<p>Our veneer ranges blend quality craftsmanship with timeless wooden textures, ensuring every piece enhances the style and sophistication of your space.</p>
-{% endblock %}
-{% block about_img %}{% static 'images/veneerrange/veneerrangetwo.jpg' %}{% endblock %}
-{% block gallery %}
-<figure class="nw-fig"><img src="{% static 'images/veneerrange/veneerrangesix.webp' %}" alt="Wood Veneer Types" loading="lazy"><figcaption>Wood Veneer Types</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/veneerrange/veneerrangeeight.webp' %}" alt="Smooth Veneer Finish" loading="lazy"><figcaption>Smooth Veneer Finish</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/veneerrange/veneerrangethree.jpg' %}" alt="Veneer Range Doors" loading="lazy"><figcaption>Veneer Range Doors</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/veneerrange/veneerrangeseven.jpg' %}" alt="Wood veneer Inlay patterns" loading="lazy"><figcaption>Wood veneer Inlay patterns</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/veneerrange/veneerrangefour.jfif' %}" alt="Elegant Veneer" loading="lazy"><figcaption>Elegant Veneer</figcaption></figure>
-<figure class="nw-fig"><img src="{% static 'images/veneerrange/veneerrangefive.avif' %}" alt="Veneer Door Wardrobe" loading="lazy"><figcaption>Veneer Door Wardrobe</figcaption></figure>
+{% block meta %}{{ r.meta }}{% endblock %}
+{% block body_class %}pg-veneer{% endblock %}
+{% block content %}
+<section class="vn-hero">
+  <div class="vn-text"><p class="eyebrow">Natural textures</p><h1 class="h1">{{ r.title }}</h1><h2>{{ r.intro_title }}</h2>{% for p in r.intro %}<p>{{ p }}</p>{% endfor %}</div>
+  <img src="{% static r.intro_img %}" alt="{{ r.title }}">
+</section>
+<section class="vn-about">
+  <img class="rv" src="{% static r.about_img %}" alt="{{ r.about_title }}" loading="lazy">
+  <div class="rv"><h2 class="h2">{{ r.about_title }}</h2>{% for p in r.about %}<p>{{ p }}</p>{% endfor %}</div>
+</section>
+<section class="wrap vn-mosaic">
+  {% for src, cap in r.gallery %}
+  <figure class="rv"><img src="{% static src %}" alt="{{ cap }}" loading="lazy" data-zoom><figcaption>{{ cap }}</figcaption></figure>
+  {% endfor %}
+</section>
+{% include 'partials/cta.html' with ref=r.title %}
 {% endblock %}

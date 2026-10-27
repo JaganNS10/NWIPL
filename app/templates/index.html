@@ -1,120 +1,114 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %}{% load static %}
 {% block title %}Neminath Wood Industry (P) Ltd | Best Product Manufacturer{% endblock %}
-{% block theme %}theme-home{% endblock %}
-
+{% block ogtitle %}Neminath Wood Industry (P) Ltd | Beyond Borders{% endblock %}
+{% block meta %}Neminath Wood Industry (P) Ltd, Chennai: quality doors, furniture and interiors crafted since 2018.{% endblock %}
+{% block body_class %}pg-home{% endblock %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Neminath Wood Industry (P) Ltd","image":"https://www.nwipl.com{% static 'images/NeminathLogo.jpeg' %}","url":"https://www.nwipl.com/","telephone":"{{ SITE.phone }}","email":"{{ SITE.email }}","address":{"@type":"PostalAddress","addressLocality":"Chennai","addressRegion":"Tamil Nadu","addressCountry":"IN"},"foundingDate":"2018"}</script>
+{% endblock %}
 {% block content %}
-<section class="nw-hero">
-  <div class="nw-wrap nw-hero-grid">
-    <div>
-      <div class="nw-eyebrow" style="color:#fff">Welcome to Neminath wood (P) Ltd</div>
-      <h1>Design Your Dream Home with Neminath Wood Industry</h1>
-      <p>Crafting Elegant Interiors with Quality Doors and Furniture. Experience designs that combine style, comfort, and lasting craftsmanship.</p>
-      <a href="#products" class="nw-btn nw-btn-light">Explore our products</a>
+<section class="hero">
+  <div class="hero-slides" aria-hidden="true">
+    {% for s in hero_slides %}<img src="{% static s %}" alt="" class="{% if forloop.first %}on{% endif %}" {% if not forloop.first %}loading="lazy"{% endif %}>{% endfor %}
+  </div>
+  <div class="hero-shade"></div>
+  <div class="wrap hero-in">
+    <p class="eyebrow">Welcome to Neminath wood (P) Ltd</p>
+    <h1>Design Your Dream Home with <em>Neminath Wood Industry</em></h1>
+    <p class="hero-tag">Beyond Borders</p>
+    <p class="lead">Crafting Elegant Interiors with Quality Doors and Furniture. Experience designs that combine style, comfort, and lasting craftsmanship.</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#products">Explore our products</a>
+      <a class="btn btn-line" href="{{ SITE.brochure }}" download>Download catalogue</a>
     </div>
-    <div class="nw-hero-card"></div>
   </div>
 </section>
 
-<section class="nw-section" id="about">
-  <div class="nw-wrap nw-story">
-    <div>
-      <div class="nw-eyebrow">Our Story</div>
-      <h2 class="nw-h2">Introducing Neminath</h2>
-      <h4>Since 2018, Neminath Wood Industry has been crafting high-quality doors, furniture, and interiors to elevate every space.</h4>
-      <p>Neminath Wood Industry transforms spaces with beautifully crafted doors, furniture, and interior solutions.</p>
-      <div class="nw-hours">
-        <h5>Opening Hours</h5>
-        Mon - Friday ~ <strong>9:00 AM - 6:00 PM</strong><br>
-        Saturday ~ 2nd and 4th <strong>9:00 AM - 6:00 PM</strong><br>
-        Sunday ~ Closed
+<section class="trust">
+  <div class="wrap trust-in">
+    <div><b>2018</b><span>Crafting since</span></div>
+    <div><b>22</b><span>Client brands</span></div>
+    <div><b>6</b><span>Product collections</span></div>
+    <div><b>Chennai</b><span>Our facility</span></div>
+  </div>
+</section>
+
+<section class="sec story" id="about">
+  <div class="wrap story-in">
+    <div class="rv">
+      <p class="eyebrow">Our Story</p>
+      <h2 class="h2">Introducing Neminath</h2>
+      <p class="story-lead">Since 2018, Neminath Wood Industry has been crafting high-quality doors, furniture, and interiors to elevate every space.</p>
+      <p class="mut">Neminath Wood Industry transforms spaces with beautifully crafted doors, furniture, and interior solutions.</p>
+      <div class="hours">
+        <h3>Opening Hours</h3>
+        <p>Mon - Friday ~ <strong>9:00 AM - 6:00 PM</strong></p>
+        <p>Saturday ~ 2nd and 4th <strong>9:00 AM - 6:00 PM</strong></p>
+        <p>Sunday ~ Closed</p>
       </div>
     </div>
-    <div class="nw-imgs">
-      <img src="{% static 'images/background2.jpg' %}" alt="">
-      <img src="{% static 'images/featured-compressed-46.jpg' %}" alt="">
+    <div class="story-img rv">
+      <img class="a" src="{% static 'images/background2.jpg' %}" alt="Neminath wood interiors" loading="lazy">
+      <img class="b" src="{% static 'images/featured-compressed-46.jpg' %}" alt="Wooden furniture crafted by Neminath" loading="lazy">
     </div>
   </div>
 </section>
 
-<section class="nw-section" id="products" style="padding-top:0">
-  <div class="nw-wrap">
-    <div class="nw-eyebrow">Neminath Design Shop</div>
-    <h2 class="nw-h2">Neminath Wood Industry - Interior Products</h2>
-    <div class="nw-grid">
-      <a href="{% url 'products' %}" class="nw-tile nw-big"><img src="{% static 'images/shop/Interiordesign.jpg' %}" alt=""><span>Luxury wooden interior furniture</span></a>
-      <a href="{% url 'products' %}" class="nw-tile"><img src="{% static 'images/shop/mock-up-poster-modern-dining-room-interior-design-with-white-empty-wall.jpg' %}" alt=""><span>Modern dining room with wooden furniture</span></a>
-      <a href="{% url 'products' %}" class="nw-tile"><img src="{% static 'images/shop/green-sofa-white-living-room-with-blank-table-mockup.jpg' %}" alt=""><span>Living Room</span></a>
-      <a href="{% url 'products' %}" class="nw-tile"><img src="{% static 'images/shop/concept-home-cooking-with-female-chef.jpg' %}" alt=""><span>Chef Kitchen</span></a>
-      <a href="{% url 'Furnitureforkids' %}" class="nw-tile"><img src="{% static 'images/shop/childrens-bed-nursery-cot-velvet-childrens-room.jpg' %}" alt=""><span>Childrens Bedroom</span></a>
-      <a href="{% url 'products' %}" class="nw-tile"><img src="{% static 'images/shop/Victorian-Dining-Table.jpg' %}" alt=""><span>Wooden dining chairs and table set</span></a>
-      <a href="{% url 'Wardrobe' %}" class="nw-tile"><img src="{% static 'images/shop/Wooden-Wardrobe-Designs.jpg' %}" alt=""><span>Wardrobe</span></a>
-      <a href="{% url 'products' %}" class="nw-tile nw-wide"><img src="{% static 'images/shop/bedroomdesign.jpg' %}" alt=""><span>Elegant bedroom furniture</span></a>
+<section class="sec shop" id="products">
+  <div class="wrap">
+    <p class="eyebrow">Neminath Design Shop</p>
+    <h2 class="h2">Neminath Wood Industry - Interior Products</h2>
+    <div class="mosaic">
+      {% for label, img, url in tiles %}
+      <a class="tile t{{ forloop.counter }} rv" href="{% url url %}"><img src="{% static 'images/'|add:img %}" alt="{{ label }}" loading="lazy"><span>{{ label }}</span></a>
+      {% endfor %}
     </div>
   </div>
 </section>
 
-<section class="nw-section nw-clients" id="clients">
-  <div class="nw-wrap">
-    <h2 class="nw-h2">Our Clients</h2>
-    <div class="nw-logos">
-      <div><img src="{% static 'images/clientlogos/akshayalogo.jpg' %}" alt="Akshaya"></div>
-      <div><img src="{% static 'images/clientlogos/bharatiyafashion.webp' %}" alt="Bharatiya Fashion"></div>
-      <div><img src="{% static 'images/clientlogos/bscpl.webp' %}" alt="BSCPL"></div>
-      <div><img src="{% static 'images/clientlogos/Casagrandlogo.webp' %}" alt="Casagrand"></div>
-      <div><img src="{% static 'images/clientlogos/eticadevelopers.jpg' %}" alt="Etica Developers"></div>
-      <div><img src="{% static 'images/clientlogos/j-stilologo.jpg' %}" alt="J Stilo"></div>
-      <div><img src="{% static 'images/clientlogos/navins.png' %}" alt="Navins"></div>
-      <div><img src="{% static 'images/clientlogos/nxghomes.jpg' %}" alt="NXG Homes"></div>
-      <div><img src="{% static 'images/clientlogos/RWD-logo.png' %}" alt="RWD"></div>
-      <div><img src="{% static 'images/clientlogos/lifestyle-new.png' %}" alt="Lifestyle"></div>
-      <div><img src="{% static 'images/clientlogos/babyshop-new.png' %}" alt="Babyshop"></div>
-      <div><img src="{% static 'images/clientlogos/htl-logo.png' %}" alt="HTL"></div>
-      <div><img src="{% static 'images/clientlogos/s&s.png' %}" alt="S&S"></div>
-      <div><img src="{% static 'images/clientlogos/shriramproperities.jpg' %}" alt="Shriram"></div>
-      <div><img src="{% static 'images/clientlogos/syconconstruction.png' %}" alt="Sycon"></div>
-      <div><img src="{% static 'images/clientlogos/tvh.png' %}" alt="TVH"></div>
-      <div><img src="{% static 'images/clientlogos/Innovative.png' %}" alt="Innovative"></div>
-      <div><img src="{% static 'images/clientlogos/homecentre-new.png' %}" alt="Home Centre"></div>
-      <div><img src="{% static 'images/clientlogos/centrepoint-new.png' %}" alt="Centrepoint"></div>
-      <div><img src="{% static 'images/clientlogos/NewCentury.png' %}" alt="New Century"></div>
-      <div><img src="{% static 'images/clientlogos/vodafone.jpg' %}" alt="Vodafone"></div>
-      <div><img src="{% static 'images/clientlogos/bbcl.webp' %}" alt="bbcl"></div>
+<section class="sec colls">
+  <div class="wrap">
+    <p class="eyebrow">Collections</p>
+    <h2 class="h2">Doors, finishes and cots</h2>
+    <ol class="coll-list">
+      {% for name, url, img in collections %}
+      <li class="rv"><a href="{% url url %}"><span class="coll-n">0{{ forloop.counter }}</span><span class="coll-t">{{ name }}</span><img src="{% static img %}" alt="" loading="lazy"><span class="coll-go" aria-hidden="true">&rarr;</span></a></li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="sec fac">
+  <div class="wrap fac-in">
+    <img class="rv" src="{% static 'images/seasoningchamber/seasoningchamber.png' %}" alt="Neminath seasoning chamber" loading="lazy">
+    <div class="rv">
+      <p class="eyebrow">Our facility</p>
+      <h2 class="h2">Every product starts with properly seasoned wood</h2>
+      <p class="mut">Our seasoning chambers control temperature, humidity and airflow so timber is dried and stabilized, reducing warping, cracking and splitting.</p>
+      <a class="btn btn-line" href="{% url 'seasoningchamber' %}">See the seasoning chamber</a>
     </div>
   </div>
 </section>
 
-<section class="nw-section" id="contact">
-  <div class="nw-wrap nw-contact">
-    <div>
-      <div class="nw-eyebrow">Ask anything.</div>
-      <h2 class="nw-h2">Say Hello</h2>
-      <form action="{% url 'contact' %}" method="post">
-        {% csrf_token %}
-        <div class="nw-row">
-          <div><label for="first-name">First Name</label><input type="text" name="first-name" id="first-name" placeholder="Jack" required></div>
-          <div><label for="last-name">Last Name</label><input type="text" name="last-name" id="last-name" placeholder="Doe" required></div>
-        </div>
-        <label for="contact">Contact Number</label>
-        <input type="text" name="contact" id="contact" placeholder="+91 9087...." required>
-        <label for="email">Email Address</label>
-        <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Jackdoe@gmail.com" required>
-        <label for="message">Message</label>
-        <textarea name="message" id="message" rows="5" placeholder="What can we help you?"></textarea>
-        <button type="submit" class="nw-btn">Send</button>
-      </form>
+<section class="sec clients" id="clients">
+  <div class="wrap">
+    <p class="eyebrow">Trusted by</p>
+    <h2 class="h2">Our Clients</h2>
+    {% include 'partials/clients.html' %}
+  </div>
+</section>
+
+<section class="sec contact" id="contact">
+  <div class="wrap contact-in">
+    <div class="rv">
+      <p class="eyebrow">Ask anything.</p>
+      <h2 class="h2">Say Hello</h2>
+      <dl class="info">
+        <dt>Facility</dt><dd>{{ SITE.address }}</dd>
+        <dt>Contact Info</dt><dd><a href="tel:{{ SITE.phone_link }}">{{ SITE.phone }}</a><br><a href="mailto:{{ SITE.email }}">{{ SITE.email }}</a></dd>
+      </dl>
     </div>
-    <div>
-      <div class="nw-card">
-        <h3>Facility</h3>
-        <p style="margin:0">Chennai, Tamil Nadu, India</p>
-      </div>
-      <div class="nw-card">
-        <h3>Contact Info</h3>
-        <p style="margin:0"><a href="tel: 090-080-0760">+91 81225 07384</a><br><a href="mailto:info@company.com">neminathwoodindustry.pvt.ltd@gmail.com</a></p>
-      </div>
-      <iframe class="nw-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3701.26577691135!2d80.13302157485984!3d13.269481387073986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a527f00411a1acf%3A0x607eee171c38f4b8!2sNeminath%20Wood%20Industry%20%E2%80%93%20Main%20Factory!5e1!3m2!1sen!2sin!4v1768816774518!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    <div class="panel rv">{% include 'partials/enquiry_form.html' %}</div>
   </div>
 </section>
 {% endblock %}
