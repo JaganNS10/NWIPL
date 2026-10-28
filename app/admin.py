@@ -1,5 +1,8 @@
 from django.contrib import admin
+from django.core.exceptions import PermissionDenied
+from django.urls import path
 
+from .exports import enquiries_excel_response
 from .models import BabyCotModel, Enquiry, Job, JobApplication
 
 
@@ -10,6 +13,23 @@ class EnquiryAdmin(admin.ModelAdmin):
     list_editable = ("is_handled",)
     search_fields = ("name", "phone", "email", "message", "source")
     readonly_fields = ("created_at", "email_sent")
+    date_hierarchy = "created_at"
+    actions = ["download_excel"]
+
+    def get_urls(self):
+        custom = [path("export-excel/", self.admin_site.admin_view(self.export_excel), name="app_enquiry_export")]
+        return custom + super().get_urls()
+
+    def export_excel(self, request):
+        """The 'Download Excel' button: exports whatever the list is currently showing (filters, dates, search)."""
+        if not self.has_view_permission(request):
+            raise PermissionDenied
+        queryset = self.get_changelist_instance(request).get_queryset(request)
+        return enquiries_excel_response(queryset)
+
+    @admin.action(description="Download selected enquiries as Excel")
+    def download_excel(self, request, queryset):
+        return enquiries_excel_response(queryset)
 
 
 @admin.register(BabyCotModel)

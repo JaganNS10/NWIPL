@@ -136,3 +136,64 @@ class StaticReferenceTests(TestCase):
         missing = sorted(p for p in paths if not (static / p).exists())
         self.assertEqual(missing, [])
         self.assertEqual(len(catalog.CLIENTS), 22)
+
+
+class ExcelExportTests(TestCase):
+    def setUp(self):
+        from django.contrib.auth import get_user_model
+        self.admin = get_user_model().objects.create_superuser("boss", "b@x.com", "pw12345!")
+        Enquiry.objects.create(name="Ravi", phone="+91 98765 43210", enquiry_type="project",
+                               message="=SUM(1+1)", source="Corporate solutions")
+        Enquiry.objects.create(name="Meena", phone="9000000000", enquiry_type="home", is_handled=True)
+
+    def _load(self, response):
+        import io
+        from openpyxl import load_workbook
+        return load_workbook(io.BytesIO(response.content))
+
+    def test_button_downloads_excel(self):
+        self.client.force_login(self.admin)
+        r = self.client.get(reverse("admin:app_enquiry_export"))
+        self.assertEqual(r.status_code, 200)
+        self.assertIn("spreadsheetml", r["Content-Type"])
+        self.assertIn(".xlsx", r["Content-Disposition"])
+        wb = self._load(r)
+        ws = wb["Enquiries"]
+        self.assertEqual([c.value for c in ws[1]][:4], ["Date", "Time", "Name", "Phone"])
+        self.assertEqual(ws.max_row, 3)
+        names = {ws.cell(row=i, column=3).value for i in (2, 3)}
+        self.assertEqual(names, {"Ravi", "Meena"})
+        self.assertEqual(wb["Per day"].cell(row=2, column=2).value, 2)
+
+    def test_formula_text_is_not_executed(self):
+        import io
+        import zipfile
+        self.client.force_login(self.admin)
+        r = self.client.get(reverse("admin:app_enquiry_export"))
+        ws = self._load(r)["Enquiries"]
+        self.assertIn("=SUM(1+1)", [ws.cell(row=i, column=8).value for i in (2, 3)])
+        sheet_xml = zipfile.ZipFile(io.BytesIO(r.content)).read("xl/worksheets/sheet1.xml").decode()
+        self.assertNotIn("<f>", sheet_xml)  # no real formula cells
+
+    def test_filter_applies(self):
+        self.client.force_login(self.admin)
+        r = self.client.get(reverse("admin:app_enquiry_export") + "?enquiry_type__exact=project")
+        self.assertEqual(self._load(r)["Enquiries"].max_row, 2)
+
+    def test_changelist_shows_button_and_action(self):
+        self.client.force_login(self.admin)
+        html = self.client.get(reverse("admin:app_enquiry_changelist")).content.decode()
+        self.assertIn("Download Excel", html)
+        self.assertIn("Download selected enquiries as Excel", html)
+
+    def test_selected_action(self):
+        self.client.force_login(self.admin)
+        ids = list(Enquiry.objects.values_list("pk", flat=True))
+        r = self.client.post(reverse("admin:app_enquiry_changelist"),
+                             {"action": "download_excel", "_selected_action": ids[:1]})
+        self.assertEqual(self._load(r)["Enquiries"].max_row, 2)
+
+    def test_public_cannot_download(self):
+        r = self.client.get(reverse("admin:app_enquiry_export"))
+        self.assertEqual(r.status_code, 302)
+        self.assertIn("login", r["Location"])
