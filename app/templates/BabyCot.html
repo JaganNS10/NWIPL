@@ -1,7 +1,52 @@
 {% extends 'base.html' %}{% load static %}
 {% block title %}Baby Cot Collection | Neminath Wood Industry (P) Ltd{% endblock %}
-{% block meta %}The NWI-BC series: precision-engineered baby cots with child-safe, non-toxic finishes by Neminath Wood Industry.{% endblock %}
+{% block meta %}The NWI-BC series: precision-engineered baby cots with child-safe, non-toxic finishes, panel dimensions and new designs by Neminath Wood Industry.{% endblock %}
 {% block body_class %}pg-cot{% endblock %}
+{% block head %}
+<style>
+/* Baby Cot page additions (safety strip, dimensions, new designs) */
+.cx-safe{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cx-safe-in{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:40px 0}
+.cx-safe-item{display:flex;gap:14px;align-items:flex-start}
+.cx-safe-item svg{flex:none;width:44px;height:44px;padding:10px;border-radius:50%;background:rgba(169,196,220,.14);color:var(--nb)}
+.cx-safe-item h3{font:600 15px/1.3 var(--sans);margin:0 0 4px;color:var(--ivory)}
+.cx-safe-item p{margin:0;font-size:13.5px;color:var(--mut);line-height:1.55}
+.cx-sec{padding:clamp(56px,8vw,100px) 0}
+.cx-head{max-width:720px;margin-bottom:34px}
+.cx-head .eyebrow{color:var(--nb)}
+.cx-head p{color:var(--mut)}
+.cx-dim-photos{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.cx-dim-fig{margin:0;background:var(--surf);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.cx-dim-img{position:relative;aspect-ratio:1/1;background:#222}
+.cx-dim-img img{width:100%;height:100%;object-fit:cover}
+.cx-pin{position:absolute;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;background:var(--nb);color:#0e1822;font:700 14px/30px var(--sans);text-align:center;font-style:normal;box-shadow:0 0 0 4px rgba(14,24,34,.55)}
+.cx-dim-fig ol{list-style:none;margin:0;padding:18px 20px 20px;display:grid;gap:12px}
+.cx-dim-fig li{display:flex;gap:12px;align-items:baseline;font-size:14px;line-height:1.5}
+.cx-dim-fig li b{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--nb);color:#0e1822;font-size:12px}
+.cx-dim-fig li span{color:var(--mut)}
+.cx-dim-fig li strong{color:var(--ivory);font-weight:600}
+.cx-table-wrap{margin-top:28px;overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:var(--surf)}
+.cx-table{width:100%;border-collapse:collapse;min-width:560px}
+.cx-table caption{text-align:left;padding:20px 24px 6px;font:600 24px var(--serif);color:var(--ivory)}
+.cx-table th,.cx-table td{padding:15px 24px;text-align:left;border-top:1px solid var(--line);font-size:14.5px}
+.cx-table thead th{font:600 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--nb);border-top:0}
+.cx-table tbody th{font-weight:600;color:var(--ivory)}
+.cx-table td{color:var(--ivory)}
+.cx-table td.note{color:var(--mut)}
+.cx-note{margin:14px 4px 0;font-size:13.5px;color:var(--mut)}
+.cx-designs{background:linear-gradient(180deg,var(--bg) 0%,#1b222a 100%)}
+.cx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cx-card{margin:0;background:var(--surf);border:1px solid var(--line);border-radius:26px;overflow:hidden;transition:transform .35s,border-color .35s}
+.cx-card:hover{transform:translateY(-6px);border-color:var(--nb)}
+.cx-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.cx-card figcaption{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px}
+.cx-card figcaption span{font:600 20px/1.2 var(--serif);color:var(--ivory)}
+.cx-card figcaption a{font-size:13.5px;color:var(--nb);font-weight:500}
+.cx-card figcaption a:hover{color:#fff}
+@media (max-width:900px){.cx-safe-in{grid-template-columns:1fr 1fr}.cx-grid{grid-template-columns:1fr 1fr}.cx-dim-photos{grid-template-columns:1fr}}
+@media (max-width:560px){.cx-safe-in{grid-template-columns:1fr}.cx-grid{gap:14px}.cx-card figcaption{padding:12px 12px 14px}.cx-card figcaption span{font-size:17px}}
+</style>
+{% endblock %}
 {% block content %}
 <section class="bc-hero">
   <div class="wrap"><p class="eyebrow">{{ intro.eyebrow }}</p><h1 class="h1">Baby Cot Collection</h1></div>
@@ -12,6 +57,28 @@
   <div>
     <h2 class="h2">{{ intro.title }}</h2>
     {% for p in intro.paras %}<p>{{ p }}</p>{% endfor %}
+  </div>
+</section>
+
+<!-- NEW: safety and materials strip -->
+<section class="cx-safe" aria-label="Safety and materials">
+  <div class="wrap cx-safe-in">
+    <div class="cx-safe-item rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div><h3>Non-toxic, child-safe paint</h3><p>Smooth, rounded edge detailing with a finish made for children.</p></div>
+    </div>
+    <div class="cx-safe-item rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 16l9 5 9-5"/></svg>
+      <div><h3>MDF core, solid wood framing</h3><p>Engineered MDF with solid wood for a strong, stable frame.</p></div>
+    </div>
+    <div class="cx-safe-item rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="1.5"/><path d="M8 8v8M16 8v8"/><path d="M12 4v4M12 16v4"/></svg>
+      <div><h3>Dowel &amp; barrel-nut joinery</h3><p>8 mm / 10 mm precision-drilled joints for a tight, rattle-free frame.</p></div>
+    </div>
+    <div class="cx-safe-item rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/><path d="M12 4v5.5M12 14.5V20M4 12h5.5M14.5 12H20"/></svg>
+      <div><h3>Fixed legs or wheel castors</h3><p>Choose fixed legs, or locking wheel castors for easy repositioning.</p></div>
+    </div>
   </div>
 </section>
 
@@ -33,6 +100,85 @@
     </div>
   </article>
   {% endfor %}
+</section>
+
+<!-- NEW: dimensions -->
+<section class="cx-sec" id="dimensions" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="cx-head rv">
+      <p class="eyebrow">Dimensions</p>
+      <h2 class="h2">Built to exact sizes</h2>
+      <p>Panel dimensions of the NWI-BC series. The numbers on the photos match the table below.</p>
+    </div>
+    <div class="cx-dim-photos">
+      <figure class="cx-dim-fig rv">
+        <div class="cx-dim-img">
+          <img src="{% static 'images/BabyCot/designs/full-drawer.jpg' %}" alt="Baby cot with dimension points marked" loading="lazy">
+          <i class="cx-pin" style="left:4.5%;top:55%">1</i><i class="cx-pin" style="left:50%;top:33%">2</i><i class="cx-pin" style="left:50%;top:66%">3</i>
+        </div>
+        <ol>
+          <li><b>1</b><span><strong>Frame height</strong> 1200 mm across side panel assembly</span></li>
+          <li><b>2</b><span><strong>Long panel</strong> inner 630 mm · outer 712 mm</span></li>
+          <li><b>3</b><span><strong>Mattress base</strong> inner 555 mm · outer 595 mm</span></li>
+        </ol>
+      </figure>
+      <figure class="cx-dim-fig rv">
+        <div class="cx-dim-img">
+          <img src="{% static 'images/BabyCot/designs/honey-drawer.jpg' %}" alt="Baby cot with dimension points marked" loading="lazy">
+          <i class="cx-pin" style="left:3.5%;top:55%">1</i><i class="cx-pin" style="left:96%;top:55%">2</i><i class="cx-pin" style="left:50%;top:66%">3</i>
+        </div>
+        <ol>
+          <li><b>1</b><span><strong>Frame height</strong> 1200 mm across side panel assembly</span></li>
+          <li><b>2</b><span><strong>Short panel</strong> inner 545–700 mm · outer 645–830 mm</span></li>
+          <li><b>3</b><span><strong>Mattress base</strong> inner 555 mm · outer 595 mm</span></li>
+        </ol>
+      </figure>
+    </div>
+    <div class="cx-table-wrap rv">
+      <table class="cx-table">
+        <caption>NWI-BC series: panel dimensions</caption>
+        <thead><tr><th scope="col">Part</th><th scope="col">Inner length</th><th scope="col">Outer length</th><th scope="col">Note</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Frame height</th><td colspan="2">1200 mm</td><td class="note">Across side panel assembly</td></tr>
+          <tr><th scope="row">Long panel</th><td>630 mm</td><td>712 mm</td><td class="note">&nbsp;</td></tr>
+          <tr><th scope="row">Short panel</th><td>545–700 mm</td><td>645–830 mm</td><td class="note">Range across variants</td></tr>
+          <tr><th scope="row">Mattress base</th><td>555 mm</td><td>595 mm</td><td class="note">&nbsp;</td></tr>
+          <tr><th scope="row">Joinery</th><td colspan="2">Dowel &amp; barrel-nut</td><td class="note">8 mm / 10 mm precision-drilled joints</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cx-note">Custom sizes are available on request: <a class="link-blue" href="{% url 'contact' %}?ref=Baby%20cot%20custom%20size">ask for a custom size &rarr;</a></p>
+  </div>
+</section>
+
+<!-- NEW: new designs gallery -->
+<section class="cx-sec cx-designs" id="new-designs">
+  <div class="wrap">
+    <div class="cx-head rv">
+      <p class="eyebrow">New designs</p>
+      <h2 class="h2">More cots from the NWI-BC range</h2>
+      <p>Tap any photo to enlarge it. These are design visuals: finishes and details can be customised on request.</p>
+    </div>
+    <div class="cx-grid">
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/walnut-grey.jpg' %}" alt="Walnut panels, grey rails" loading="lazy" data-zoom><figcaption><span>Walnut panels, grey rails</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Walnut panels, grey rails"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/rattan-arch.jpg' %}" alt="Rattan arch headboard" loading="lazy" data-zoom><figcaption><span>Rattan arch headboard</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Rattan arch headboard"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/walnut-cream.jpg' %}" alt="Walnut and cream" loading="lazy" data-zoom><figcaption><span>Walnut and cream</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Walnut and cream"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/sage-rattan.jpg' %}" alt="Sage rails, oak and rattan" loading="lazy" data-zoom><figcaption><span>Sage rails, oak and rattan</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Sage rails, oak and rattan"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/full-drawer.jpg' %}" alt="Natural wood, full-width drawer" loading="lazy" data-zoom><figcaption><span>Natural wood, full-width drawer</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Natural wood, full-width drawer"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/honey-drawer.jpg' %}" alt="Honey oak, storage drawer" loading="lazy" data-zoom><figcaption><span>Honey oak, storage drawer</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Honey oak, storage drawer"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/beech-drawer.jpg' %}" alt="Natural beech, storage drawer" loading="lazy" data-zoom><figcaption><span>Natural beech, storage drawer</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Natural beech, storage drawer"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/twin-drawers.jpg' %}" alt="Natural wood, twin drawers" loading="lazy" data-zoom><figcaption><span>Natural wood, twin drawers</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Natural wood, twin drawers"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/walnut-tray.jpg' %}" alt="Walnut, drawers and changing tray" loading="lazy" data-zoom><figcaption><span>Walnut, drawers and changing tray</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Walnut, drawers and changing tray"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/natural-tray.jpg' %}" alt="Natural wood, changing tray and shelf" loading="lazy" data-zoom><figcaption><span>Natural wood, changing tray and shelf</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Natural wood, changing tray and shelf"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/natural-side-tray.jpg' %}" alt="Natural wood, side tray and storage" loading="lazy" data-zoom><figcaption><span>Natural wood, side tray and storage</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Natural wood, side tray and storage"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/plywood-shelf.jpg' %}" alt="Plywood cot, drawers and shelf" loading="lazy" data-zoom><figcaption><span>Plywood cot, drawers and shelf</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Plywood cot, drawers and shelf"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/plywood-cutouts.jpg' %}" alt="Plywood panels, playful cut-outs" loading="lazy" data-zoom><figcaption><span>Plywood panels, playful cut-outs</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Plywood panels, playful cut-outs"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/oak-rounded.jpg' %}" alt="Rounded oak, slotted panels" loading="lazy" data-zoom><figcaption><span>Rounded oak, slotted panels</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Rounded oak, slotted panels"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/natural-legs.jpg' %}" alt="Natural wood, tapered legs" loading="lazy" data-zoom><figcaption><span>Natural wood, tapered legs</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Natural wood, tapered legs"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/walnut-canopy.jpg' %}" alt="Walnut canopy cot, carved panel" loading="lazy" data-zoom><figcaption><span>Walnut canopy cot, carved panel</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Walnut canopy cot, carved panel"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/moon-stars.jpg' %}" alt="White, moon and star design" loading="lazy" data-zoom><figcaption><span>White, moon and star design</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – White, moon and star design"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+    </div>
+  </div>
 </section>
 {% include 'partials/cta.html' with ref='Baby Cot Collection' text='Need a custom baby cot?' %}
 {% endblock %}
