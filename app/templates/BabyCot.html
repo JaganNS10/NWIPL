@@ -45,6 +45,21 @@
 .cx-card figcaption a:hover{color:#fff}
 @media (max-width:900px){.cx-safe-in{grid-template-columns:1fr 1fr}.cx-grid{grid-template-columns:1fr 1fr}.cx-dim-photos{grid-template-columns:1fr}}
 @media (max-width:560px){.cx-safe-in{grid-template-columns:1fr}.cx-grid{gap:14px}.cx-card figcaption{padding:12px 12px 14px}.cx-card figcaption span{font-size:17px}}
+/* Dual Video Sections (Plants & Baby Cots) */
+.cx-plants, .cx-cot-videos{background:var(--bg2);border-top:1px solid var(--line)}
+.cx-plant-grid, .cx-cot-vid-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.cx-plant-card, .cx-cot-vid-card{margin:0;background:var(--surf);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .35s}
+.cx-plant-card:hover, .cx-cot-vid-card:hover{border-color:var(--nb)}
+.cx-video-wrap{position:relative;aspect-ratio:16/9;background:#0e0c0a;border-bottom:1px solid var(--line)}
+.cx-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+.cx-plant-body, .cx-cot-vid-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:8px}
+.cx-plant-tag, .cx-cot-vid-tag{font:600 11px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--nb)}
+.cx-plant-body h3, .cx-cot-vid-body h3{font:600 24px/1.2 var(--serif);color:var(--ivory);margin:0}
+.cx-plant-body p, .cx-cot-vid-body p{margin:0;font-size:14px;color:var(--mut);line-height:1.6}
+.cx-plant-loc{margin-top:6px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--ivory);display:flex;gap:8px;align-items:flex-start}
+.cx-plant-loc svg{flex:none;width:16px;height:16px;color:var(--nb);margin-top:2px}
+@media (max-width:900px){.cx-plant-grid, .cx-cot-vid-grid{grid-template-columns:1fr}}
+
 </style>
 {% endblock %}
 {% block content %}
@@ -161,9 +176,9 @@
     </div>
     <div class="cx-grid">
       <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/walnut-grey.jpg' %}" alt="Walnut panels, grey rails" loading="lazy" data-zoom><figcaption><span>Walnut panels, grey rails</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Walnut panels, grey rails"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
-      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/rattan-arch.jpg' %}" alt="Rattan arch headboard" loading="lazy" data-zoom><figcaption><span>Rattan arch headboard</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Rattan arch headboard"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <!-- <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/rattan-arch.jpg' %}" alt="Rattan arch headboard" loading="lazy" data-zoom><figcaption><span>Rattan arch headboard</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Rattan arch headboard"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure> -->
       <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/walnut-cream.jpg' %}" alt="Walnut and cream" loading="lazy" data-zoom><figcaption><span>Walnut and cream</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Walnut and cream"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
-      <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/sage-rattan.jpg' %}" alt="Sage rails, oak and rattan" loading="lazy" data-zoom><figcaption><span>Sage rails, oak and rattan</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Sage rails, oak and rattan"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+      <!-- <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/sage-rattan.jpg' %}" alt="Sage rails, oak and rattan" loading="lazy" data-zoom><figcaption><span>Sage rails, oak and rattan</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Sage rails, oak and rattan"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure> -->
       <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/full-drawer.jpg' %}" alt="Natural wood, full-width drawer" loading="lazy" data-zoom><figcaption><span>Natural wood, full-width drawer</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Natural wood, full-width drawer"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
       <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/honey-drawer.jpg' %}" alt="Honey oak, storage drawer" loading="lazy" data-zoom><figcaption><span>Honey oak, storage drawer</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Honey oak, storage drawer"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
       <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/beech-drawer.jpg' %}" alt="Natural beech, storage drawer" loading="lazy" data-zoom><figcaption><span>Natural beech, storage drawer</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Natural beech, storage drawer"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
@@ -177,6 +192,130 @@
       <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/natural-legs.jpg' %}" alt="Natural wood, tapered legs" loading="lazy" data-zoom><figcaption><span>Natural wood, tapered legs</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Natural wood, tapered legs"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
       <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/walnut-canopy.jpg' %}" alt="Walnut canopy cot, carved panel" loading="lazy" data-zoom><figcaption><span>Walnut canopy cot, carved panel</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – Walnut canopy cot, carved panel"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
       <figure class="cx-card rv"><img src="{% static 'images/BabyCot/designs/moon-stars.jpg' %}" alt="White, moon and star design" loading="lazy" data-zoom><figcaption><span>White, moon and star design</span><a href="{% url 'contact' %}?ref={{ "NWI Baby Cot – White, moon and star design"|urlencode }}">Enquire about this design &rarr;</a></figcaption></figure>
+    </div>
+  </div>
+</section>
+<!-- SECTION 1: MANUFACTURING PLANTS -->
+<section class="cx-sec cx-plants" id="our-plants">
+  <div class="wrap">
+    <div class="cx-head rv">
+      <p class="eyebrow">Made in Chennai · Manufacturing &amp; Export</p>
+      <h2 class="h2">Inside our production plants</h2>
+      <p>Two dedicated facilities in Chennai equipped with in-house CNC machining, moisture-controlled wood seasoning chambers, and child-safe finishing units for bulk export orders.</p>
+    </div>
+
+    <div class="cx-plant-grid">
+      <!-- Plant 1 Video -->
+      <article class="cx-plant-card rv" id="plant-1">
+        <div class="cx-video-wrap">
+          <video controls preload="metadata" playsinline poster="{% static 'images/BabyCot/nwibc1a.jpeg' %}">
+            <source src="{% static 'plant1.mp4' %}" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cx-plant-body">
+          <span class="cx-plant-tag">Facility 01 · Main Production Unit</span>
+          <h3>Plant 1 — CNC Machining &amp; Framing</h3>
+          <p>Multi-axis CNC cutting, precision dowel &amp; barrel-nut drilling, and moisture-controlled timber seasoning for repeatable export quality.</p>
+          <div class="cx-plant-loc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>217/1A, Bandikavanoor Village, Periyapalayam High Road, Chennai 600067</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Plant 2 Video -->
+      <article class="cx-plant-card rv" id="plant-2">
+        <div class="cx-video-wrap">
+          <video controls preload="metadata" playsinline poster="{% static 'images/BabyCot/designs/walnut-grey.jpg' %}">
+            <source src="{% static 'plant2.mp4' %}" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cx-plant-body">
+          <span class="cx-plant-tag">Facility 02 · Finishing &amp; Export Unit</span>
+          <h3>Plant 2 — Child-Safe Finishing &amp; Packing</h3>
+          <p>Dedicated non-toxic paint curing unit, stage-by-stage quality inspection, and flat-pack damage-resistant export packaging.</p>
+          <div class="cx-plant-loc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>45/1A, Janapanchatram Koot Road, Alinjivakkam, Chennai 600067</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION 2: BABY COT PRODUCT VIDEOS -->
+<section class="cx-sec cx-cot-videos" id="cot-videos">
+  <div class="wrap">
+    <div class="cx-head rv">
+      <p class="eyebrow">Product Showcase · NWI-BC Series</p>
+      <h2 class="h2">Baby cot demonstrations &amp; walkthroughs</h2>
+      <p>Watch our modular baby cots in action—explore the joinery strength, storage drawers, adjustable mattress bases, and smooth mobility castors.</p>
+    </div>
+
+    <div class="cx-cot-vid-grid">
+      <!-- Cot Video 1 -->
+      <article class="cx-cot-vid-card rv" id="cot-video-1">
+        <div class="cx-video-wrap">
+          <video controls preload="metadata" playsinline poster="{% static 'images/BabyCot/designs/full-drawer.jpg' %}">
+            <source src="{% static 'cot-demo-1.mp4' %}" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cx-cot-vid-body">
+          <span class="cx-cot-vid-tag">Video 01 · Assembly &amp; Features</span>
+          <h3>NWI-BC Series Overview &amp; Joinery</h3>
+          <p>A closer look at our dowel and barrel-nut precision engineering, child-safe non-toxic finishes, and sturdy frame stability.</p>
+        </div>
+      </article>
+
+      <!-- Cot Video 2 -->
+      <article class="cx-cot-vid-card rv" id="cot-video-2">
+        <div class="cx-video-wrap">
+          <video controls preload="metadata" playsinline poster="{% static 'images/BabyCot/designs/honey-drawer.jpg' %}">
+            <source src="{% static 'cot-demo-2.mp4' %}" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cx-cot-vid-body">
+          <span class="cx-cot-vid-tag">Video 02 · Storage &amp; Variants</span>
+          <h3>Storage Drawers &amp; Mobility Castors</h3>
+          <p>Demonstrating our 4-drawer storage variants, side shelving units, and smooth-rolling locking wheel castors for hospitals and nurseries.</p>
+        </div>
+      </article>
+
+      <!-- Cot Video 3 -->
+      <article class="cx-cot-vid-card rv" id="cot-video-2">
+        <div class="cx-video-wrap">
+          <video controls preload="metadata" playsinline poster="{% static 'images/BabyCot/designs/honey-drawer.jpg' %}">
+            <source src="{% static 'cot-demo-3.mp4' %}" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cx-cot-vid-body">
+          <span class="cx-cot-vid-tag">Video 02 · Storage &amp; Variants</span>
+          <h3>Storage Drawers &amp; Mobility Castors</h3>
+          <p>Demonstrating our 4-drawer storage variants, side shelving units, and smooth-rolling locking wheel castors for hospitals and nurseries.</p>
+        </div>
+      </article>
+
+      <!-- Cot Video 4 -->
+      <article class="cx-cot-vid-card rv" id="cot-video-2">
+        <div class="cx-video-wrap">
+          <video controls preload="metadata" playsinline poster="{% static 'images/BabyCot/designs/honey-drawer.jpg' %}">
+            <source src="{% static 'cot-demo-4.mp4' %}" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cx-cot-vid-body">
+          <span class="cx-cot-vid-tag">Video 02 · Storage &amp; Variants</span>
+          <h3>Storage Drawers &amp; Mobility Castors</h3>
+          <p>Demonstrating our 4-drawer storage variants, side shelving units, and smooth-rolling locking wheel castors for hospitals and nurseries.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
