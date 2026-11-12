@@ -247,7 +247,7 @@
 </section>
 
 
-<!-- SECTION 2: BABY COT PRODUCT VIDEOS -->
+<!-- SECTION 2: BABY COT PRODUCT VIDEOS (4 VIDEOS) -->
 <section class="cx-sec cx-cot-videos" id="cot-videos">
   <div class="wrap">
     <div class="cx-head rv">
@@ -266,9 +266,9 @@
           </video>
         </div>
         <div class="cx-cot-vid-body">
-          <span class="cx-cot-vid-tag">Video 01 · Assembly &amp; Features</span>
-          <h3>NWI-BC Series Overview &amp; Joinery</h3>
-          <p>A closer look at our dowel and barrel-nut precision engineering, child-safe non-toxic finishes, and sturdy frame stability.</p>
+          <span class="cx-cot-vid-tag">Video 01 · Model Overview</span>
+          <h3>NWI-BC-1A Foundation Model</h3>
+          <p>A closer look at our foundational dowel and barrel-nut precision engineering and child-safe non-toxic finishes.</p>
         </div>
       </article>
 
@@ -281,47 +281,44 @@
           </video>
         </div>
         <div class="cx-cot-vid-body">
-          <span class="cx-cot-vid-tag">Video 02 · Storage &amp; Variants</span>
-          <h3>Storage Drawers &amp; Mobility Castors</h3>
-          <p>Demonstrating our 4-drawer storage variants, side shelving units, and smooth-rolling locking wheel castors for hospitals and nurseries.</p>
+          <span class="cx-cot-vid-tag">Video 02 · Storage &amp; Drawers</span>
+          <h3>4-Drawer Storage &amp; Side Shelves</h3>
+          <p>Demonstrating our practical multi-drawer configuration designed for busy hospital nurseries and home use.</p>
         </div>
       </article>
 
-      <!-- Model 3 -->
-      <article class="bc-model rv">
-        <img src="{% static 'images/BabyCot/designs/rattan-arch.jpg' %}" alt="NWI-BC-1A-03 Baby Cot" loading="lazy">
-        <div>
-          <span class="code">NWI-BC-1A-03</span>
-          <h2>NWI-BC-1A-03</h2>
-          <p>A classic design featuring a hand-woven rattan arch headboard paired with natural wood frames, combining traditional aesthetics with modern nursery safety.</p>
-          <ul class="specs">
-            <li><b>Material</b><span>Engineered MDF core with solid wood framing &amp; natural rattan</span></li>
-            <li><b>Finish</b><span>Non-toxic, child-safe clear coat</span></li>
-            <li><b>Joinery</b><span>Dowel &amp; barrel-nut construction</span></li>
-            <li><b>Variant</b><span>Fixed legs, arched rattan headboard</span></li>
-          </ul>
-          <a class="link-blue" href="{% url 'contact' %}?ref=NWI-BC-1A-03">Enquire about this model &rarr;</a>
+      <!-- Cot Video 3 -->
+      <article class="cx-cot-vid-card rv" id="cot-video-3">
+        <div class="cx-video-wrap">
+          <video controls preload="metadata" playsinline poster="{% static 'images/BabyCot/designs/rattan-arch.jpg' %}">
+            <source src="{% static 'cot-demo-3.mp4' %}" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cx-cot-vid-body">
+          <span class="cx-cot-vid-tag">Video 03 · Design &amp; Aesthetics</span>
+          <h3>Rattan Arch &amp; Custom Panels</h3>
+          <p>Showcasing our premium arched headboard and decorative woven rattan panels combining safety with timeless style.</p>
         </div>
       </article>
 
-      <!-- Model 4 -->
-      <article class="bc-model rev rv">
-        <img src="{% static 'images/BabyCot/designs/walnut-grey.jpg' %}" alt="NWI-BC-1A-05 Baby Cot" loading="lazy">
-        <div>
-          <span class="code">NWI-BC-1A-05</span>
-          <h2>NWI-BC-1A-05</h2>
-          <p>A bold modern contrast style featuring deep walnut wood-grain panels with contemporary grey rails, styled for premium urban nurseries.</p>
-          <ul class="specs">
-            <li><b>Material</b><span>Engineered MDF core with premium wood veneer</span></li>
-            <li><b>Finish</b><span>Non-toxic matte grey and walnut stain</span></li>
-            <li><b>Joinery</b><span>Dowel &amp; barrel-nut construction</span></li>
-            <li><b>Variant</b><span>Tapered legs, two-tone finish</span></li>
-          </ul>
-          <a class="link-blue" href="{% url 'contact' %}?ref=NWI-BC-1A-05">Enquire about this model &rarr;</a>
+      <!-- Cot Video 4 -->
+      <article class="cx-cot-vid-card rv" id="cot-video-4">
+        <div class="cx-video-wrap">
+          <video controls preload="metadata" playsinline poster="{% static 'images/BabyCot/designs/walnut-tray.jpg' %}">
+            <source src="{% static 'cot-demo-4.mp4' %}" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cx-cot-vid-body">
+          <span class="cx-cot-vid-tag">Video 04 · Multi-Function</span>
+          <h3>Changing Tray &amp; Convertible Setup</h3>
+          <p>Highlighting our integrated baby changing trays, utility shelves, and flexible mobility options with locking wheel castors.</p>
         </div>
       </article>
     </div>
   </div>
 </section>
+
 {% include 'partials/cta.html' with ref='Baby Cot Collection' text='Need a custom baby cot?' %}
 {% endblock %}
